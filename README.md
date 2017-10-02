@@ -1,69 +1,36 @@
-Symfony Standard Edition
-========================
+Albinuta WebAPP
+============================
+> Albinuta is an online space for stories for kids.
+> Some of them may have video available, some may only be written stories.
+> Some of them might be crawled from Youtube (or other similar websites),
+> some of them might be added by admin through our interface.
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+## Main Bundles
+- AlbFrontendBundle: Display content logically processed from AlbAppBundle
+- AlbBackendBundle: Display content logically processed from AlbAppBundle
+- AlbAppBundle: Logic happens here
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+## Features
+1. All pages:
+- Top Navigation
+- Footer
+- Bootstrap 4 CSS framework
+2. HOMEPAGE:
+- Hero bxSlider with saved content
+- Listing of saved stories in boxes grid
+- Youtube Online Playlist crawled with DomCrawler within AlbAppBundle
+3. Story:
+- CRUD pages
 
-What's inside?
---------------
 
-The Symfony Standard Edition is configured with the following defaults:
+@todo:
+1. Animate logo horizontally - [DONE]
+2. Integrate TinyMCE for Story content field - [DONE]
+3. File uploader for images [WIP] - VichUploaderBundle - [DONE]
+4. Add Playlist dynamically
+5. Add some shine in the layout of all pages
 
-  * An AppBundle you can use to start coding;
-
-  * Twig as the only configured template engine;
-
-  * Doctrine ORM/DBAL;
-
-  * Swiftmailer;
-
-  * Annotations enabled for everything.
-
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.2/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.2/doctrine.html
-[8]:  https://symfony.com/doc/3.2/templating.html
-[9]:  https://symfony.com/doc/3.2/security.html
-[10]: https://symfony.com/doc/3.2/email.html
-[11]: https://symfony.com/doc/3.2/logging.html
-[12]: https://symfony.com/doc/3.2/assetic/asset_management.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
+## Changes/Feature integrations
+1. Animate logo horizontally
+2. Integrate TinyMCE for Story content field
+3. File uploader for images [WIP] - VichUploaderBundle
