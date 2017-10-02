@@ -1,0 +1,88 @@
+{% extends 'frontend.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Add a new Story<br /><span class="form-subtitle text-uppercase">Story creation</span></h1>
+
+        {{ form_start(form) }}
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <h5 class="mb-0">
+                                    <strong class="text-uppercase text-14">Media</strong>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="card-block">
+                                    <div class="form-group">
+                                        {{ form_label(form.video) }}
+                                        {{ form_widget(form.video) }}
+                                        {{ form_errors(form.video) }}
+                                    </div>
+                                    {# Include video #}
+                                    {% if form.video %}
+                                        <div class="video-box position-relative margin-bottom-15">
+                                            <div class="field-icon">
+                                                <i class="fa fa-file-video-o fa-lg" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-group">
+                                        {{ form_label(form.imageFile) }}
+                                        {{ form_widget(form.imageFile) }}
+                                        {{ form_errors(form.imageFile) }}
+                                    </div>
+                                    {# Include image #}
+                                    {% if form.imageFile %}
+                                        <div class="video-box position-relative">
+                                            <div class="field-icon">
+                                                <i class="fa fa-file-image-o fa-lg" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <strong class="text-uppercase text-14">Story Details</strong>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="card-block">
+                                    <div class="form-group">
+                                        {{ form_label(form.title) }}
+                                        {{ form_widget(form.title) }}
+                                        {{ form_errors(form.title) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.content) }}
+                                        {# Include content with Rich Text Editor #}
+                                        {{ form_widget( form.content ) }}
+                                        {{ tinymce_init() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row actions-row">
+                <div class="col">
+                    <ul>
+                        <li>
+                            <a class="btn btn-secondary" href="{{ path('story_index') }}">Back to the list</a>
+                            <input class="btn btn-success" type="submit" value="Create" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div> <!-- /container -->
+{% endblock %}

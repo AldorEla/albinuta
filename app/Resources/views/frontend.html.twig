@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/albfrontend/css/narrow-jumbotron.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/jquery.bxslider/jquery.bxslider.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/albfrontend/css/style.css') }}" />
+        <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+        <link href="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.5.1/css/froala_style.min.css') }}" rel="stylesheet" type="text/css" />
+        {% block javascripts %}
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('bundles/albfrontend/third-party/jquery.bxslider/jquery.bxslider.min.js') }}"></script>
+            <script src="{{ asset('bundles/albfrontend/js/script.js') }}"></script>
+            <script src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.5.1/js') }}"></script>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container-fluid top-navigation">
+            <div class="row">
+                <div class="col">
+                    <div class="header clearfix">
+                        <nav>
+                            {% set active_stories="" %}
+                            {% if app.request.get('_route') == 'story_index' %}
+                                {% set active_stories=" active" %}
+                            {% endif %}
+                            <ul class="nav nav-pills float-right">
+                                <li class="nav-item">
+                                    <a class="nav-link{{active_stories}}" href="{{ path('story_index') }}">Stories</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <h3 class="text-muted"><a title="Albinuta's Home" class="logo" href="{{ path('alb_frontend_homepage') }}"><img height="57" src="/images/bee-gif.gif" /> Albinuta</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main>{% block body %}{% endblock %}</main>
+        <footer class="footer">
+            <p>&copy; Albinuta {{ "now"|date("Y") }}</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+alb_backend_homepage:
+    path:     /
+    defaults: { _controller: AlbBackendBundle:Default:index }
+
+alb_backend_dashboard:
+    path:     /dashboard
+    defaults: { _controller: AlbBackendBundle:Dashboard:index }

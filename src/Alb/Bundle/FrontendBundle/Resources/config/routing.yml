@@ -1,0 +1,4 @@
+alb_frontend_homepage:
+    path:     /
+    defaults: { _controller: AlbFrontendBundle:Home:index }
+

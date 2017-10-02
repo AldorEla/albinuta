@@ -1,0 +1,31 @@
+# src/Alb/AppBundle/Resources/config/doctrine/Story.orm.yml
+Alb\Bundle\AppBundle\Entity\Story:
+    type: entity
+    table: story
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            type: string
+            length: 255
+        video:
+            type: string
+            length: 255
+        image:
+            type: string
+            options:
+                default: 'maxresdefault.jpg'
+        content:
+            type: text
+        created_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updated_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update

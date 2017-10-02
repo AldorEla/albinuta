@@ -1,0 +1,99 @@
+{% extends 'frontend.html.twig' %}
+
+{% block body %}
+    <div class="container edit-page inner-page">
+        <h1>{{ story.title }}<br /><span class="form-subtitle text-uppercase">Story edit</span></h1>
+
+        {% form_theme edit_form 'form/fields.html.twig' %}
+
+        {{ form_start(edit_form) }}
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <h5 class="mb-0">
+                                    <strong class="text-uppercase text-14">Media</strong>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="card-block">
+                                    <div class="form-group">
+                                        {{ form_label(edit_form.video) }}
+                                        {{ form_widget(edit_form.video) }}
+                                        {{ form_errors(edit_form.video) }}
+                                    </div>
+                                    {# Include video #}
+                                    {% if edit_form.video %}
+                                        <div class="video-box position-relative margin-bottom-15">
+                                            <div class="field-icon">
+                                                <i class="fa fa-file-video-o fa-lg" aria-hidden="true"></i>
+                                            </div>
+                                            <iframe width="100%" height="100%" class="iframe-video" src="{{ story.video }}" frameborder="0" allowfullscreen></iframe>
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-group">
+                                        {{ form_widget(edit_form.imageFile) }}
+                                        {{ form_errors(edit_form.imageFile) }}
+                                    </div>
+                                    {# Include image #}
+                                    {% if edit_form.imageFile %}
+                                        <div class="video-box position-relative">
+                                            <div class="field-icon">
+                                                <i class="fa fa-file-image-o fa-lg" aria-hidden="true"></i>
+                                            </div>
+                                            <img src="{{ story_upload_destination }}{{ story.image }}" alt="{{ story.title }}" width="100%" />
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <strong class="text-uppercase text-14">Story Details</strong>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="card-block">
+                                    <div class="form-group">
+                                        {{ form_label(edit_form.title) }}
+                                        {{ form_widget(edit_form.title) }}
+                                        {{ form_errors(edit_form.title) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(edit_form.content) }}
+                                        {# Include content with Rich Text Editor #}
+                                        {{ form_widget( edit_form.content ) }}
+                                        {{ tinymce_init() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row actions-row">
+                <div class="col">
+                    <ul>
+                        <li>
+                            <a class="btn btn-secondary" href="{{ path('story_index') }}">Back to the list</a>
+                            <a class="btn btn-secondary" href="{{ path('story_show', { 'id': story.id }) }}">Read</a>
+                            <input class="btn btn-success" type="submit" value="Update" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {{ form_end(edit_form) }}
+        <div class="row actions-row">
+            <div class="col">
+                {{ form_start(delete_form) }}
+                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash fa-lg"></i> Delete</button>
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

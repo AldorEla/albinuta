@@ -1,0 +1,4 @@
+services:
+#    alb_backend.example:
+#        class: Alb\Bundle\BackendBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

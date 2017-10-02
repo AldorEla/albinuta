@@ -1,0 +1,45 @@
+{% if pagination|length %}
+	<div class="row">
+		<div class="pagination">
+			<ul>
+				<li>
+					{% if currentPage == 1 %}
+						<a class="disabled">First</a>
+					{% else %}
+						<a href="{{ path('story_index') }}">First</a>
+					{% endif %}
+				</li>
+				<li>
+					{% if currentPage > 1 %}
+						<a href="{{ path('story_index', {'page': currentPage - 1}) }}">Previous</a>
+					{% else %}
+						<a class="disabled">Previous</a>
+					{% endif %}
+				</li>
+				{% for i in 1..pagination.pages %}
+					<li>
+						{% if currentPage == i %}
+							<a class="disabled">{{ i }}</a>
+						{% else %}
+							<a href="{{ path('story_index', {'page': i}) }}">{{ i }}</a>
+						{% endif %}
+					</li>
+				{% endfor %}
+				<li>
+					{% if currentPage < pagination.pages %}
+						<a href="{{ path('story_index', {'page': currentPage + 1}) }}">Next</a>
+					{% else %}
+						<a class="disabled">Next</a>
+					{% endif %}
+				</li>
+				<li>
+					{% if currentPage == pagination.pages %}
+						<a class="disabled">Last</a>
+					{% else %}
+						<a href="{{ path('story_index', {'page': pagination.pages}) }}">Last</a>
+					{% endif %}
+				</li>
+			</ul>
+		</div>
+	</div>
+{% endif %}

@@ -1,0 +1,4 @@
+services:
+#    alb_frontend.example:
+#        class: Alb\Bundle\FrontendBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

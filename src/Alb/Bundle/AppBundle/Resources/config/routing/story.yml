@@ -1,0 +1,26 @@
+story_index:
+    path:     /{page}
+    defaults: { _controller: "AlbAppBundle:Story:index", page: 1 }
+    methods:  GET
+    requirements:
+        page: \d+
+
+story_show:
+    path:     /{id}/show
+    defaults: { _controller: "AlbAppBundle:Story:show" }
+    methods:  GET
+
+story_new:
+    path:     /new
+    defaults: { _controller: "AlbAppBundle:Story:new" }
+    methods:  [GET, POST]
+
+story_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AlbAppBundle:Story:edit" }
+    methods:  [GET, POST]
+
+story_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AlbAppBundle:Story:delete" }
+    methods:  DELETE

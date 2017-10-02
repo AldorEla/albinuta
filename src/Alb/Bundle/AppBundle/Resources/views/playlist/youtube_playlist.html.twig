@@ -1,0 +1,22 @@
+<div class="row">
+		<div class="col">
+			<div class="playlist-title">
+				<h6 class="text-uppercase">{{ playlist_title }}</h6>
+			</div>
+      	<div class="playlist-links">
+      		{% if playlist_links %}
+      			<ul>
+	      			{% for link in playlist_links %}
+	      				<li class="fixed-height js-toggle-fixed-height">
+	      					<a href="{{ link.href.0|trim }}" title="{{ link.title.0|trim }}">
+	      						{{ link.title.0 }}
+	      						<span class="close" title="Show less">x</span>
+	      					</a>
+	      				</li>
+	      			{% endfor %}
+      			</ul>
+      		{% endif %}
+      		<div class="clearfix"></div>
+    	</div>
+    </div>
+</div>

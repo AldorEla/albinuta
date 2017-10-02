@@ -1,0 +1,3 @@
+alb_app_story:
+    resource: "@AlbAppBundle/Resources/config/routing/story.yml"
+    prefix:   /stories/

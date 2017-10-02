@@ -1,0 +1,40 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Welcome to Albinuta{% endblock %}
+
+{% block body %}
+	<div class="jumbotron home-bg">
+		<div class="container">
+			<ul class="js-video-slider margin-bottom-negative-30">
+				{% for story in stories %}
+			  		<li>
+				      	<h2>{{ story.title }}</h2>
+						<div class="video-container">
+							<iframe width="100%" height="100%" class="iframe-video" src="{{ story.video }}" frameborder="0" allowfullscreen></iframe>
+						</div>
+			  		</li>
+			  	{% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+      	<h1 class="text-uppercase">Welcome to Albinuta</h1>
+      	<div class="row saved-videos">
+      		{% for story in stories %}
+      			<div class="col-lg-4">
+      				<div class="video-box">
+	      				<div class="video-container">
+	      					<iframe width="100%" height="100%" class="iframe-video" src="{{ story.video }}" frameborder="0" allowfullscreen></iframe>
+	      				</div>
+		      			<h5><a title="{{ story.title|trim }}" href="{{ path('story_show', { 'id': story.id }) }}">{{ story.title|trim }}</a></h5>
+	      				<div class="details-box" data-eq-height>
+		      				<p>{{ story.content|striptags|length > 175 ? story.content|striptags|slice(0, 175) ~ '...' : story.content|striptags  }}</p>
+		      			</div>
+	      			</div>
+            	</div>
+        	{% endfor %}
+      	</div>
+
+      	{{ render(controller( 'AlbAppBundle:Playlist:youtubePlaylist', {'type': 'youtube'} )) }}
+    </div> <!-- /container -->
+{% endblock %}

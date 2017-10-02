@@ -1,0 +1,14 @@
+vich_uploader:
+    db_driver: orm
+    twig: true
+    mappings:
+        story_image:
+            uri_prefix:         '%app.path.story_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/story/images'
+            # namer:              'alb_app.namer.story_upload'   # specify a file namer service id for this entity, null default
+            namer:              vich_uploader.namer_origname
+            directory_namer:    ~     # specify a directory namer service id for this entity, null default
+            delete_on_remove:   true  # determines whether to delete file upon removal of entity
+            delete_on_update:   true  # determines wheter to delete the file upon update of entity
+            inject_on_load:     false # determines whether to inject a File instance upon load
+

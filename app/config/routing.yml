@@ -1,0 +1,11 @@
+alb_app:
+    resource: "@AlbAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+alb_frontend:
+    resource: "@AlbFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+alb_backend:
+    resource: "@AlbBackendBundle/Resources/config/routing.yml"
+    prefix:   /backend

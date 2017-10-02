@@ -1,0 +1,18 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+    app.path.story_images: /uploads/story/images
+
+services:
+    #service_name:
+    #    class: AppBundle\Directory\ClassName
+    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+    alb_app.namer.story_upload:
+        class: Alb\Bundle\AppBundle\Namer\StoryNamer
+        tags:
+            - { name: namer }
+        arguments:
+            - ~
+            - Alb\Bundle\AppBundle\Entity\Story
+            - ~
