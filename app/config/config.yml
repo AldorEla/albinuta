@@ -5,11 +5,13 @@ imports:
     - { resource: tinymce.yml }
     - { resource: doctrine_extensions.yml }
     - { resource: vich_uploader.yml }
+    - { resource: sonata_admin.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    story_upload_destination: '/uploads/story/images/'
 
 framework:
     #esi: ~
@@ -40,7 +42,7 @@ framework:
 # Twig Configuration
 twig:
     globals:
-        story_upload_destination: '/uploads/story/images/'
+        story_upload_destination: '%story_upload_destination%'
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     form_themes:

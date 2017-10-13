@@ -10,15 +10,19 @@
         <link rel="stylesheet" href="{{ asset('bundles/albfrontend/css/narrow-jumbotron.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/jquery.bxslider/jquery.bxslider.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('bundles/albfrontend/css/style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/colorbox/colorbox.css') }}" />        
+        <link rel="stylesheet" href="{{ asset('bundles/albfrontend/css/fonts.css') }}" />
+        <link class="js-colour-theme" rel="stylesheet" href="{{ asset('bundles/albfrontend/css/style.css') }}" />
         <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
-        <link href="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.5.1/css/froala_style.min.css') }}" rel="stylesheet" type="text/css" />
+        {# <link href="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.5.1/css/froala_style.min.css') }}" rel="stylesheet" type="text/css" /> #}
         {% block javascripts %}
             <script src="{{ asset('js/jquery.min.js') }}"></script>
             <script src="{{ asset('js/bootstrap.min.js') }}"></script>
             <script src="{{ asset('bundles/albfrontend/third-party/jquery.bxslider/jquery.bxslider.min.js') }}"></script>
+            <script src="{{ asset('bundles/albfrontend/third-party/colorbox/jquery.colorbox-min.js') }}"></script>
             <script src="{{ asset('bundles/albfrontend/js/script.js') }}"></script>
-            <script src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.5.1/js') }}"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+            {# <script src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.5.1/js') }}"></script> #}
         {% endblock %}
     </head>
     <body>
@@ -26,6 +30,7 @@
             <div class="row">
                 <div class="col">
                     <div class="header clearfix">
+                        <span class="js-hamburger hamburger" data-closed="&#10005;" data-open="&#9776;">&#9776;</span>
                         <nav>
                             {% set active_stories="" %}
                             {% if app.request.get('_route') == 'story_index' %}
@@ -49,6 +54,13 @@
             </div>
         </div>
         <main>{% block body %}{% endblock %}</main>
+        <aside class="change-theme-container" title="Change Colour Theme">
+            <select class="form-control js-change-colour-theme">
+                <option value="/bundles/albfrontend/css/style.css">Default Theme</option>
+                <option value="/bundles/albfrontend/css/colour-theme/theme-dark.css">Dark Theme</option>
+                <option value="/bundles/albfrontend/css/colour-theme/theme-light.css">Light Theme</option>
+            </select>&nbsp;&nbsp;<img src="{{ asset('bundles/albfrontend/images/defaults/palette-icon.png') }}" height="25" />
+        </aside>
         <footer class="footer">
             <p>&copy; Albinuta {{ "now"|date("Y") }}</p>
         </footer>

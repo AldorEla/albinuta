@@ -1,10 +1,15 @@
 var mobileResolution = 767; // Maximum mobile resolution value in pixels
 var videoSlider;
+var playlistLinksSlider;
+var COOKIE_COLOUR_THEME = 'colour-theme';
 
 $(document).ready(function(){
-  videoSlider = $('.js-video-slider').bxSlider();
+  initBxSliders();
   toggleFixedHeight();
   equalHeightBoxes();
+  initColorboxes();
+  initHamburgerMenu('.js-hamburger');
+  initChangeColourTheme();
 });
 
 $(window).on('load', function(){
@@ -14,6 +19,48 @@ $(window).on('load', function(){
 $(window).on('resize', function() {
 	equalHeightBoxes();
 });
+
+$(window).on('scroll', function() {
+  // Set page-scrolled class to body
+  setPageScrolledToBody('page-scrolled');
+});
+
+// Init bxSlider calls
+function initBxSliders() {
+  // Video Slider
+  var video_slider = $('.js-video-slider');
+  if(video_slider.length) {
+  	videoSlider = video_slider.bxSlider();
+  }
+
+  // Playlist Links Slider
+  var playlist_links_slider = $('.js-playlist-links-slider');
+  if(playlist_links_slider.length) {
+  	playlistLinksSlider = playlist_links_slider.bxSlider({
+  		mode: 'vertical',
+  		slideWidth: 740,
+	    minSlides: 10,
+	    maxSlides: 10,
+	    slideMargin: 0
+  	});
+  }
+}
+
+// Set page-scrolled class to body
+function setPageScrolledToBody(class_name) {
+  var body = $('body');
+  var header = $('header');
+  var topOffset = 50;
+  if(header.length) {
+    topOffset += header.height();
+  }
+
+  if($( window ).scrollTop() >= topOffset) {
+    body.addClass(class_name);
+  } else {
+    body.removeClass(class_name);
+  }
+}
 
 function toggleFixedHeight() {
 	var trigger = $('.js-toggle-fixed-height');
@@ -67,4 +114,104 @@ function equalHeightBoxes() {
 			});
 		}
 	}
+}
+
+// Init Colorboxes
+function initColorboxes() {
+	var colorbox_object = $('.colorbox');
+	if(colorbox_object.length) {
+		colorbox_object.colorbox();
+	}
+}
+
+/* Init Hamburger Menu Functionality.
+ * 
+ * @param string trigger
+ *   Can be class or id of the hamburger trigger element [.js-hamburger, #js-hamburger, etc.].
+ */
+function initHamburgerMenu(trigger) {
+	var trigger = $(trigger);
+	var body = $('body');
+	var nav = $('.header').find('nav');
+
+	if(trigger.length) {
+		trigger.on('click', function() {
+			if(body.attr('data-hamburger-status') == 'open') {
+				nav.removeClass('open');
+				$(this).text($(this).attr('data-open'));
+				body.attr('data-hamburger-status', 'closed');
+			} else {
+				nav.addClass('open');
+				$(this).text($(this).attr('data-closed'));
+				body.attr('data-hamburger-status', 'open');
+			}
+		});
+	}
+}
+
+/** Init Change Colour Theme.
+ */
+function initChangeColourTheme() {
+	var default_css = '/bundles/albbundle/frontend/css/style.css';
+	var link_tag = $('link.js-colour-theme');
+	if(link_tag.length) {
+		link_tag.each(function() {
+			default_css = $(this).attr('href');
+		});
+	}
+
+	var trigger = $('.js-change-colour-theme');
+	if(getCookie(COOKIE_COLOUR_THEME))
+	link_tag.attr('href', getCookie(COOKIE_COLOUR_THEME));
+
+	if(trigger.length) {
+		trigger.on('click', function() {
+			if(default_css.length) {
+				if($(this).find('option:selected').attr('value').length) {
+					link_tag.attr('href', $(this).find('option:selected').attr('value'));
+					setColourTheme(COOKIE_COLOUR_THEME, $(this).find('option:selected').attr('value'));
+				}
+			}
+		});
+	}
+}
+
+// Set Colour Theme.
+function setColourTheme(cookie_name, cookie_value) {
+    if(cookie_name) {
+	    if(getCookie(cookie_name)) {
+	      deleteCookie(cookie_name); // Reset cookie
+	    }
+	    var expires = cookieFutureTimeExpiration();
+	    document.cookie = cookie_name + '=' + cookie_value + ';expires='+expires+';path=/;';
+    }
+}
+
+// Cookie Future Time Expiration
+function cookieFutureTimeExpiration() {
+  var now = new Date();
+  var time = now.getTime();
+  var expireTime = time + 50000*36000;
+  now.setTime(expireTime);
+  var expirationTime = now.toGMTString();
+
+  return expirationTime;
+}
+
+// Delete Cookie
+function deleteCookie(name) {
+  var expires = cookieFutureTimeExpiration();
+  document.cookie = name + '='+ '' +';expires='+expires+';path=/;';
+}
+
+// Get Cookie
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
 }

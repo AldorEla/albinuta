@@ -5,7 +5,7 @@
 			</div>
       	<div class="playlist-links">
       		{% if playlist_links %}
-      			<ul>
+      			<ul class="mobile-hidden">
 	      			{% for link in playlist_links %}
 	      				<li class="fixed-height js-toggle-fixed-height">
 	      					<a href="{{ link.href.0|trim }}" title="{{ link.title.0|trim }}">
@@ -15,6 +15,18 @@
 	      				</li>
 	      			{% endfor %}
       			</ul>
+      			<div class="mobile-visible">
+	      			<ul class="js-playlist-links-slider">
+		      			{% for link in playlist_links %}
+		      				<li class="fixed-height js-toggle-fixed-height slide">
+		      					<a href="{{ link.href.0|trim }}" title="{{ link.title.0|trim }}">
+		      						{{ link.title.0 }}
+		      						<span class="close" title="Show less">x</span>
+		      					</a>
+		      				</li>
+		      			{% endfor %}
+	      			</ul>
+	      		</div>
       		{% endif %}
       		<div class="clearfix"></div>
     	</div>
