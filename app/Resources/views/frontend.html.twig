@@ -12,7 +12,12 @@
         <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/colorbox/colorbox.css') }}" />        
         <link rel="stylesheet" href="{{ asset('bundles/albfrontend/css/fonts.css') }}" />
-        <link class="js-colour-theme" rel="stylesheet" href="{{ asset('bundles/albfrontend/css/style.css') }}" />
+        {% if app.request.cookies.get('colour-theme')|length %}
+            <link class="js-colour-theme" rel="stylesheet" href="{{ app.request.cookies.get('colour-theme') }}" />
+        {% else %}
+            <link class="js-colour-theme" rel="stylesheet" href="{{ asset('bundles/albfrontend/css/style.css') }}" />
+        {% endif %}
+
         <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
         {# <link href="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.5.1/css/froala_style.min.css') }}" rel="stylesheet" type="text/css" /> #}
         {% block javascripts %}

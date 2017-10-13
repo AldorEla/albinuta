@@ -161,8 +161,9 @@ function initChangeColourTheme() {
 	}
 
 	var trigger = $('.js-change-colour-theme');
-	if(getCookie(COOKIE_COLOUR_THEME))
-	link_tag.attr('href', getCookie(COOKIE_COLOUR_THEME));
+	if(getCookie(COOKIE_COLOUR_THEME) && default_css != getCookie(COOKIE_COLOUR_THEME)) {
+		link_tag.attr('href', getCookie(COOKIE_COLOUR_THEME));
+	}
 
 	if(trigger.length) {
 		trigger.on('click', function() {

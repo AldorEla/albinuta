@@ -14,6 +14,11 @@ body {
 /* [-] Google Fonts: CSS Classes  */
 
 /* + Utils */
+a:active,
+a:focus {
+	text-decoration: none;
+	outline: medium none;
+}
 .clearfix {
 	clear: both;
 }
@@ -161,8 +166,8 @@ ul {
 	left: 0;
 	z-index: 2;
 	padding: 5px 30px;
-	border-top: 1px solid #dcddd5;
-	background-color: #dcddd5;
+	border-top: 1px solid #222;
+	background-color: #333;
 }
 .playlist-links ul li.open .close {
 	display: block;
@@ -178,6 +183,14 @@ ul {
 .playlist-links ul li.open .close:hover {
 	background-color: #333;
 	color: #fff;
+}
+.card-header {
+	border-right: 0;
+	border-bottom-color: #fff;
+}
+.card-header,
+.card-block {
+	background: teal;
 }
 .video-container {
 	padding-bottom: 56.25%; 
@@ -242,7 +255,7 @@ html, body {
 .container {}
 .bx-wrapper .bx-controls-direction a {
 	margin-top: 0!important;
-	z-index: 99!important;
+	z-index: 5!important;
 }
 .bx-wrapper {
 	width: 100%;
@@ -403,7 +416,7 @@ body.page-scrolled .header a.logo {
 	border-top: 1px solid #222;
 	border-bottom: 1px solid #222;
 	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-bottom: 0;
 	padding: 15px;
 }
 .field-icon {
@@ -492,7 +505,7 @@ body.page-scrolled .hero-banner {
 	position: fixed;
 	left: -180px;
 	bottom: 200px;
-	z-index: 1;
+	z-index: 6;
 	text-align: right;;
 	transition: all 0.2s ease-in-out;
 	border-top-right-radius: 10px;
@@ -530,6 +543,9 @@ body.page-scrolled .hero-banner {
 @media screen and (max-width: 767px) {
 	.mobile-hidden {
 		display: none;
+	}
+	.mobile-visible .bx-wrapper {
+		background: teal;
 	}
 	/* Show hamburger on mobile resolutions */
 	.hamburger {
