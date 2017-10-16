@@ -10,6 +10,7 @@ $(document).ready(function(){
   initColorboxes();
   initHamburgerMenu('.js-hamburger');
   initChangeColourTheme();
+  initAddFileUploadPreview();
 });
 
 $(window).on('load', function(){
@@ -212,4 +213,24 @@ function getCookie(name) {
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
     }
     return null;
+}
+
+// Add Preview after File upload
+function initAddFileUploadPreview() {
+	var trigger = $('.file-input');
+	var selected_element = $('.selected-element');
+	if(trigger.length) {
+		trigger.find('input[type="file"]').unbind().on('change', function() {
+			if($(selected_element).length) { 
+				$(selected_element).remove();
+			}
+			$(this).after('<p class="selected-element"><span class="uploaded-filename">' + this.files[0].name + '</span> <span class="pull-right cursor-pointer" onclick="javascript:cancelFileupload(this)">&#10005;</span></p>');
+			initAddFileUploadPreview();
+		});
+	}
+}
+
+function cancelFileupload(this_obj) {
+	$(this_obj).closest('.form-group').find('input[type="file"]').val('');
+	$(this_obj).closest('.selected-element').remove();
 }

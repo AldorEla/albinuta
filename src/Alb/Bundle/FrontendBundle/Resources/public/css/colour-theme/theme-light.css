@@ -67,6 +67,17 @@ a {
 .no-margin {
 	margin: 0!important;
 }
+.cursor-pointer {
+	cursor: pointer;
+}
+.selected-element {
+	display: block;
+	padding: 5px 0 0;
+}
+.uploaded-filename {
+	font-size: 11px;
+	font-weight: 400;
+}
 /* - Utils */
 a:hover {
 	text-decoration: none;
@@ -201,6 +212,9 @@ ul {
 	background-color: #eceeef;
 	border: 1px solid #BF3F3F;
 	padding: 15px;
+}
+.video-box .selected-element {
+	margin-bottom: 0;
 }
 .video-box .details-box {
 	padding: 15px;
@@ -470,11 +484,54 @@ a.disabled {
 }
 /* - Pagination */
 
+/* [+] Edit pages */
+.file-input {
+	width: 100%;
+	position: relative;
+	overflow-x: hidden;
+}
+.file-input .form-group:first-child > label {
+	display: none;
+}
+.file-input input[type="file"] {
+	opacity: 0;
+	position: relative;
+	z-index: 1;
+}
+.file-input::before {
+	content: attr(data-browse-text);
+	display: block;
+	position: absolute;
+	width: 100%;
+	z-index: 0;
+	left: 0;
+	font-size: 1rem;
+	color: #fff;
+	background: #bf3f3f;
+	border: none;
+	outline: medium none;
+	padding: 5px 10px;
+	border-radius: 0;
+	border: 0.5px solid #bf3f3f;
+	text-align: center;
+}
+/* [-] Edit pages */
+
 /* + Hero Banner */
 .hero-banner {
 	height: 60vh;
 	overflow: hidden;
 	transition: all 0.5s ease-in-out;
+}
+.hero-banner::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
 }
 .hero-banner img {
 	width: 100%;
@@ -611,6 +668,14 @@ body.page-scrolled .hero-banner {
 	body.page-scrolled .header .nav-item a:not(.active):hover {
 		color: #fff;
 		background: rgba(255, 255, 255, 0.15);
+	}
+	/* + Hero Banner */
+	.hero-banner {
+		height: 40vh;
+	}
+	/* - Hero Banner */
+	main h1 {
+		margin-bottom: 0;
 	}
 } /* [-] max-width: 767px */
 

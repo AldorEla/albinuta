@@ -22,27 +22,32 @@
                                         {{ form_label(edit_form.video) }}
                                         {{ form_widget(edit_form.video) }}
                                         {{ form_errors(edit_form.video) }}
-                                    </div>
-                                    {# Include video #}
-                                    {% if edit_form.video %}
-                                        <div class="video-box position-relative margin-bottom-15">
-                                            <div class="field-icon">
-                                                <i class="fa fa-file-video-o fa-lg" aria-hidden="true"></i>
+
+                                        {# Include video #}
+                                        {% if edit_form.video %}
+                                            <div class="video-box position-relative margin-bottom-15">
+                                                <div class="field-icon">
+                                                    <i class="fa fa-file-video-o fa-lg" aria-hidden="true"></i>
+                                                </div>
+                                                <iframe width="100%" height="100%" class="iframe-video" src="{{ story.video }}" frameborder="0" allowfullscreen></iframe>
                                             </div>
-                                            <iframe width="100%" height="100%" class="iframe-video" src="{{ story.video }}" frameborder="0" allowfullscreen></iframe>
-                                        </div>
-                                    {% endif %}
-                                    <div class="form-group">
-                                        {{ form_widget(edit_form.imageFile) }}
-                                        {{ form_errors(edit_form.imageFile) }}
+                                        {% endif %}
                                     </div>
                                     {# Include image #}
+                                    {{ form_label(edit_form.imageFile) }}
+                                    {{ form_widget(edit_form.image) }}
                                     {% if edit_form.imageFile %}
-                                        <div class="video-box position-relative">
-                                            <div class="field-icon">
-                                                <i class="fa fa-file-image-o fa-lg" aria-hidden="true"></i>
+                                        <div class="form-group">
+                                            <div class="video-box position-relative">
+                                                <div class="field-icon">
+                                                    <i class="fa fa-file-image-o fa-lg" aria-hidden="true"></i>
+                                                </div>
+                                                <img src="{{ story_upload_destination }}{{ story.image }}" alt="{{ story.title }}" width="100%" />
                                             </div>
-                                            <img src="{{ story_upload_destination }}{{ story.image }}" alt="{{ story.title }}" width="100%" />
+                                            <div class="file-input" data-browse-text="Browse">
+                                                {{ form_widget(edit_form.imageFile) }}
+                                                {{ form_errors(edit_form.imageFile) }}
+                                            </div>
                                         </div>
                                     {% endif %}
                                 </div>
