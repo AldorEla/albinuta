@@ -220,6 +220,7 @@ ul {
 	border: 1px solid #222;
 	padding: 15px;
 	color: #292b2c;
+	transition: all 0.2s ease-in-out;
 }
 .video-box .selected-element {
 	margin-bottom: 0;

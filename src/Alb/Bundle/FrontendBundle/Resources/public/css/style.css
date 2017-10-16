@@ -199,6 +199,7 @@ ul {
 	background-color: #eceeef;
 	border: 1px solid #dcdddf;
 	padding: 15px;
+	transition: all 0.2s ease-in-out;
 }
 .video-box .selected-element {
 	margin-bottom: 0;
