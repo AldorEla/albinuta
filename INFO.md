@@ -27,21 +27,32 @@ Albinuta WebAPP
 - Youtube Online Playlist crawled with DomCrawler within AlbAppBundle
 3. Story:
 - CRUD pages
+- Clone story - listing page [@TBD]
+- Save as new - details page [@TBD]
 4. Admin:
 - SonataAdminBundle, path "/admin"
+5. Frontend User:
+- Register and login to use "My Space" feature [@TBD]
+6. My Space:
+- Playground for registered users [@TBD]
 
 
 @todo:
-1. Animate logo horizontally - [DONE]
-2. Integrate TinyMCE for Story content field - [DONE]
-3. File uploader for images [WIP] - VichUploaderBundle - [DONE]
-4. Add Playlist dynamically
-5. Add some shine in the layout of all pages
-6. Change Colour Theme - [DONE]
-7. Change layout Theme
+ 1. Animate logo horizontally
+ 2. Integrate TinyMCE for Story content field
+ 3. File uploader for images [WIP] - VichUploaderBundle
+ 4. Add Playlist dynamically [@TBD]
+ 5. Add some shine in the layout of all pages
+ 6. Change Colour Theme
+ 7. Change layout Theme [@TBD]
+ 8. Integrate FOS User bundle for Sonata Admin Bundle [@TBD]
+ 9. Integrate FOS User bundle for frontend user authentication [@TBD]
+10. Clone Story - listing page [@TBD]
+11. Save as new - edit page [@TBD]
+12. My Space - for authenticated user [@TBD]
 
 ## Changes/Feature integrations
-1. Animate logo horizontally
-2. Integrate TinyMCE for Story content field
-3. File uploader for images
-4. Change Colour Theme
+ 1. Animate logo horizontally
+ 2. Integrate TinyMCE for Story content field
+ 3. File uploader for images
+ 4. Change Colour Theme: Integration of 3 basic colour themes [default, dark, light]
