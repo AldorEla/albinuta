@@ -22,7 +22,7 @@ class StoryController extends Controller
     {
         $doctrine       = $this->getDoctrine();
         $em             = $doctrine->getManager();
-        $limit          = SELF::STORIES_LISTING_LIMIT; 
+        $limit          = self::STORIES_LISTING_LIMIT; 
         $stories        = StoryRepository::findAllStories($em, $page, $limit);
         $totalStories   = StoryRepository::getTotalStoryItems($em);
 

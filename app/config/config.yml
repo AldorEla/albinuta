@@ -6,6 +6,7 @@ imports:
     - { resource: doctrine_extensions.yml }
     - { resource: vich_uploader.yml }
     - { resource: sonata_admin.yml }
+    - { resource: sonata_media.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -58,6 +59,8 @@ doctrine:
         user: '%database_user%'
         password: '%database_password%'
         charset: UTF8
+        types:
+            json: Sonata\Doctrine\Types\JsonType
 
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'

@@ -1,3 +1,7 @@
 alb_app_story:
     resource: "@AlbAppBundle/Resources/config/routing/story.yml"
     prefix:   /stories/
+
+alb_price_hunter:
+    resource: "@AlbAppBundle/Resources/config/routing/price_hunter.yml"
+    prefix:   /price-hunter/

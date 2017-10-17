@@ -1,0 +1,10 @@
+price_hunter_index:
+    path:     /{page}
+    defaults: { _controller: "AlbAppBundle:PriceHunter:index", page: 1 }
+    methods:  GET
+    requirements:
+        page: \d+
+price_hunter_json:
+    path:     /price-hunter/price-hunter.json
+    defaults: { _controller: "AlbAppBundle:PriceHunter:json" }
+    methods:  GET

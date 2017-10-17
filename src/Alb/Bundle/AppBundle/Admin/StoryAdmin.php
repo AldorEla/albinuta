@@ -56,7 +56,9 @@ class StoryAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('title')
-            ->add('image')
+            ->add('image', NULL, [
+                'template' => 'SonataAdminBundle:CRUD:image.html.twig',
+            ])
         ;
     }
 

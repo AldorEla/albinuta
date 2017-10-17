@@ -11,6 +11,7 @@ $(document).ready(function(){
   initHamburgerMenu('.js-hamburger');
   initChangeColourTheme();
   initAddFileUploadPreview();
+  initDatatables();
 });
 
 $(window).on('load', function(){
@@ -25,6 +26,15 @@ $(window).on('scroll', function() {
   // Set page-scrolled class to body
   setPageScrolledToBody('page-scrolled');
 });
+
+function initDatatables() {
+	var priceHunter = $('#priceHunter');
+	if(priceHunter.length) {
+		$(priceHunter).DataTable( {
+		    "ajax": $(this).attr("data-ajax-url")
+		} );
+	}
+}
 
 // Init bxSlider calls
 function initBxSliders() {

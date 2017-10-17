@@ -30,9 +30,9 @@
         {% else %}
             <link class="js-colour-theme" rel="stylesheet" href="{{ asset('bundles/albfrontend/css/style.css') }}" />
         {% endif %}
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
 
         <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
-        {# <link href="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.5.1/css/froala_style.min.css') }}" rel="stylesheet" type="text/css" /> #}
         {% block javascripts %}
             <script src="{{ asset('js/jquery.min.js') }}"></script>
             <script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -40,7 +40,7 @@
             <script src="{{ asset('bundles/albfrontend/third-party/colorbox/jquery.colorbox-min.js') }}"></script>
             <script src="{{ asset('bundles/albfrontend/js/script.js') }}"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-            {# <script src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.5.1/js') }}"></script> #}
+            <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
         {% endblock %}
     </head>
     <body>
@@ -50,16 +50,20 @@
                     <div class="header clearfix">
                         <span class="js-hamburger hamburger" data-closed="&#10005;" data-open="&#9776;">&#9776;</span>
                         <nav>
-                            {% set active_stories="" %}
+                            {% set active_stories = "" %}
                             {% if app.request.get('_route') == 'story_index' %}
                                 {% set active_stories=" active" %}
+                            {% endif %}
+                            {% set active_price_hunter="" %}
+                            {% if app.request.get('_route') == 'price_hunter_index' %}
+                                {% set active_price_hunter = " active" %}
                             {% endif %}
                             <ul class="nav nav-pills float-right">
                                 <li class="nav-item">
                                     <a class="nav-link{{active_stories}}" href="{{ path('story_index') }}">Stories</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                    <a class="nav-link{{active_stories}}" href="{{ path('price_hunter_index') }}">Price Hunter</a>
                                 </li>
                                 <li class="nav-item">
                                 <a class="nav-link" href="#">Contact</a>
