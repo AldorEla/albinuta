@@ -24,14 +24,14 @@ class BlogPostAdmin extends AbstractAdmin
 	        ->end()
 	        ->with('Meta data', ['class' => 'col-md-3'])
 	            ->add('category', 'sonata_type_model', [
+                    'required' => false,
 	                'class' => 'Alb\Bundle\BackendBundle\Entity\Category',
 	                'property' => 'name',
 	                'attr' => ['data-sonata-select2-allow-clear' => 'false'],
 	            ])
 	            ->add('draft', 'checkbox', [
-	            	'attr' => [
-	            		'class' => ''
-	            	]
+                    'required' => false,
+                    'attr' => ['data-sonata-select2-allow-clear' => 'true'],
 	        	])
 	        ->end()
 	    ;
@@ -55,6 +55,9 @@ class BlogPostAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('title');
+        $datagridMapper->add('title')->add('category', null, array(), 'entity', array(
+                'class'    => 'Alb\Bundle\BackendBundle\Entity\Category',
+                'choice_label' => 'name', // In Symfony2: 'property' => 'name'
+            ));
     }
 }

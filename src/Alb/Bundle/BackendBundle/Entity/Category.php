@@ -24,11 +24,19 @@ class Category
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
+    /**
+     * @var parent
+     */
+    private $parent;
+
+
+    /**
+     * @var arrayCollection
+     */
+    private $children;
 
     /**
      * Get id
@@ -72,11 +80,39 @@ class Category
     public function __construct()
     {
         $this->blogPosts = new ArrayCollection();
+        $this->children = new ArrayCllection();
     }
 
     public function getBlogPosts()
     {
         return $this->blogPosts;
+    }
+
+    public function getChildren() {
+        return $this->children;
+    }
+
+    /**
+     * Set parentId
+     *
+     * @param integer $parentId
+     * @return Category
+     */
+    public function setParent(Category $parent)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parentId
+     *
+     * @return integer
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 }
 

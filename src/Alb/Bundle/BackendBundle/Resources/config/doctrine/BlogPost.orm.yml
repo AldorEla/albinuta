@@ -1,0 +1,24 @@
+# src/Alb/BackendBundle/Resources/config/doctrine/BlogPost.orm.yml
+Alb\Bundle\BackendBundle\Entity\BlogPost:
+    type: entity
+    manyToOne:
+        category:
+            targetEntity: Alb\Bundle\BackendBundle\Entity\Category
+            inversedBy: blogPosts
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+    table: blog_post
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            type: string
+            length: 255
+        body:
+            type: text
+        draft:
+            type: boolean
+            default: false

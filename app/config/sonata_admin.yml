@@ -1,6 +1,49 @@
+sonata_admin:
+    show_mosaic_button:   true
+    dashboard:
+        groups:
+            administration:
+                label:                "Administration"
+                icon:                 '<i class="fa fa-cog"></i>'
+                items:
+                    - admin.category
+                    - admin.blog_post
+                    - admin.story
 sonata_block:
     default_contexts: [cms]
     blocks:
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts: [admin]
+
+services:
+    #service_name:
+    #    class: AppBundle\Directory\ClassName
+    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+    alb_app.namer.story_upload:
+        class: Alb\Bundle\AppBundle\Namer\StoryNamer
+        tags:
+            - { name: namer }
+        arguments: [~, Alb\Bundle\AppBundle\Entity\Story, ~]
+
+    admin.category:
+        class: Alb\Bundle\BackendBundle\Admin\CategoryAdmin
+        arguments: [~, Alb\Bundle\BackendBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Category }
+        public: true
+
+    admin.blog_post:
+        class: Alb\Bundle\BackendBundle\Admin\BlogPostAdmin
+        arguments: [~, Alb\Bundle\BackendBundle\Entity\BlogPost, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Blog post }
+        public: true
+
+    admin.story:
+        class: Alb\Bundle\AppBundle\Admin\StoryAdmin
+        arguments: [~, Alb\Bundle\AppBundle\Entity\Story, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Story }
+        public: true

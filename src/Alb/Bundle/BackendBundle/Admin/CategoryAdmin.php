@@ -28,7 +28,13 @@ class CategoryAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', 'text');
+        $formMapper->add('name', 'text')
+            ->add('parent', 'sonata_type_model', [
+                'required' => false,
+                'class' => 'Alb\Bundle\BackendBundle\Entity\Category',
+                'property' => 'name',
+                'attr' => ['data-sonata-select2-allow-clear' => 'true'],
+            ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -43,7 +49,7 @@ class CategoryAdmin extends AbstractAdmin
 
     public function toString($object)
     {
-        return $object 
+        return $object
             ? $object->getName()
             : 'Category'; // shown in the breadcrumb on the create view
     }

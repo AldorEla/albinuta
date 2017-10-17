@@ -56,6 +56,7 @@ class StoryAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('title')
+            ->add('image')
         ;
     }
 

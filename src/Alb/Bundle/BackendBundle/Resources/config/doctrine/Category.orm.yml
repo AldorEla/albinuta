@@ -1,0 +1,19 @@
+# src/Alb/BackendBundle/Resources/config/doctrine/Category.orm.yml
+Alb\Bundle\BackendBundle\Entity\Category:
+    type: entity
+    manyToOne:
+        parent:
+            targetEntity: Alb\Bundle\BackendBundle\Entity\Category
+            inversedBy: children
+            joinColumn:
+                name: parent_id
+                referencedColumnName: id
+    table: category
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
