@@ -4,7 +4,13 @@ price_hunter_index:
     methods:  GET
     requirements:
         page: \d+
+
 price_hunter_json:
-    path:     /price-hunter/price-hunter.json
+    path:     /price-hunter/products.json
     defaults: { _controller: "AlbAppBundle:PriceHunter:json" }
+    methods:  GET
+
+price_hunter_import_products:
+    path:     /full-import
+    defaults: { _controller: "AlbAppBundle:PriceHunter:fullImport" }
     methods:  GET

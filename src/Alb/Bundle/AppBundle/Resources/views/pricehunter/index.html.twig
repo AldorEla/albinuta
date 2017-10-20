@@ -8,7 +8,7 @@
                 <p class="results">We found {{ totalProducts }} products for you</p>
             </div>
         </div>
-        {#<div class="row saved-videos">
+        <div class="row saved-videos">
             {% for product in products %}
                 <div class="col-md-6 col-lg-4">
                     <div class="video-box">
@@ -17,36 +17,15 @@
                             <p>Price: {{ product.price }}</p>
                             <p>Price min: {{ product.price_min }}</p>
                             <p>Price max: {{ product.price_max }}</p>
-                            <p>Date: {{ product.date }}</p>
+                            <p>Date: {{ product.date|date() }}</p>
                         </div>
                     </div>
                 </div>
             {% endfor %}
-        </div> #}
+        </div> 
         
-        {# {{ render(controller( 'AlbAppBundle:PriceHunter:pagination', {'totalProducts': totalProducts, 'currentPage': currentPage} )) }} #}
+        {{ render(controller( 'AlbAppBundle:PriceHunter:pagination', {'totalProducts': totalProducts, 'currentPage': currentPage} )) }}
 
         {# all products | good price | minimum price #}
-
-        <table id="priceHunter" class="display" cellspacing="0" width="100%" data-ajax-url="{{ path('price_hunter_json') }}">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Price min</th>
-                    <th>Price max</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Price min</th>
-                    <th>Price max</th>
-                    <th>Date</th>
-                </tr>
-            </tfoot>
-        </table>
     </div> <!-- /container -->
 {% endblock %}

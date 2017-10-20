@@ -29,9 +29,23 @@ $(window).on('scroll', function() {
 
 function initDatatables() {
 	var priceHunter = $('#priceHunter');
-	if(priceHunter.length) {
+
+	if($(priceHunter) != 'undefined' && $(priceHunter).length) {
 		$(priceHunter).DataTable( {
-		    "ajax": $(this).attr("data-ajax-url")
+		    "ajax": {
+	            "url": $(this).attr("data-ajax-url"),
+	            "dataSrc": "",
+	            "type": "GET"
+	        },
+	        "columns": [
+	            { "data": "title" },
+				{ "data": "price" },
+				{ "data": "link" },
+				{ "data": "date" },
+				{ "data": "image" },
+				{ "data": "price_min" },
+				{ "data": "price_max" }
+	        ]
 		} );
 	}
 }

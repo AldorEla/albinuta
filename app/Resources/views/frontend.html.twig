@@ -23,24 +23,24 @@
         <link rel="stylesheet" href="{{ asset('bundles/albfrontend/css/narrow-jumbotron.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/jquery.bxslider/jquery.bxslider.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/colorbox/colorbox.css') }}" />        
+        <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/colorbox/colorbox.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/albfrontend/third-party/DataTables/datatables.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/albfrontend/css/fonts.css') }}" />
         {% if app.request.cookies.get('colour-theme')|length %}
             <link class="js-colour-theme" rel="stylesheet" href="{{ app.request.cookies.get('colour-theme') }}" />
         {% else %}
             <link class="js-colour-theme" rel="stylesheet" href="{{ asset('bundles/albfrontend/css/style.css') }}" />
         {% endif %}
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
 
         <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
         {% block javascripts %}
             <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/tether.min.js') }}"></script>
             <script src="{{ asset('js/bootstrap.min.js') }}"></script>
             <script src="{{ asset('bundles/albfrontend/third-party/jquery.bxslider/jquery.bxslider.min.js') }}"></script>
             <script src="{{ asset('bundles/albfrontend/third-party/colorbox/jquery.colorbox-min.js') }}"></script>
+            <script src="{{ asset('bundles/albfrontend/third-party/DataTables/datatables.js') }}"></script>
             <script src="{{ asset('bundles/albfrontend/js/script.js') }}"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-            <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
         {% endblock %}
     </head>
     <body>
