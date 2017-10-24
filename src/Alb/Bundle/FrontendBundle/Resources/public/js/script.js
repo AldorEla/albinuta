@@ -53,8 +53,9 @@ function initDatatables() {
 // Init bxSlider calls
 function initBxSliders() {
   // Video Slider
-  var video_slider = $('.js-video-slider');
+  video_slider = $('.js-video-slider');
   if(video_slider.length) {
+  	console.log(video_slider);
   	videoSlider = video_slider.bxSlider();
   }
 
@@ -144,8 +145,9 @@ function equalHeightBoxes() {
 // Init Colorboxes
 function initColorboxes() {
 	var colorbox_object = $('.colorbox');
+	
 	if(colorbox_object.length) {
-		colorbox_object.colorbox();
+		$(colorbox_object).colorbox({width: "80%", height: "80%", opacity: "0.85"});
 	}
 }
 

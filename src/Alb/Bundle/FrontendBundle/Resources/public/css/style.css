@@ -556,7 +556,7 @@ body.page-scrolled .hero-banner {
 }
 .change-theme-container select {
 	display: inline-block;
-	width: 83%;
+	width: 80%;
 }
 /* - Change Theme Container */
 
@@ -577,6 +577,12 @@ body.page-scrolled .hero-banner {
 
 /* [+] max-width: 767px */
 @media screen and (max-width: 767px) {
+	.text-xs-left.text-right {
+		text-align: left!important;
+	}
+	.btn.btn-icon {
+		width: 100%;
+	}
 	.mobile-hidden {
 		display: none;
 	}

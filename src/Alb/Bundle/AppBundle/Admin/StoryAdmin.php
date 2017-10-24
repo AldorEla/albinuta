@@ -40,7 +40,7 @@ class StoryAdmin extends AbstractAdmin
                 ->add('image', NULL, [
                     'attr' => ['readonly' => 'true'],
                     'sonata_help' => '<a href="' . $story_image_url . '" class="colorbox"><img src="' . $story_image_url . '" width="100%" /></a>
-                        <script type="text/javascript">$(document).ready(function() { $(\'.colorbox\').colorbox({width: "80%", height: "80%", opacity: "0.85"}); } );</script>',
+                        <script type="text/javascript">$(document).ready(function() { $(\'.colorbox\').colorbox({width: "80%", height: "80%", opacity: "0.85"}); });</script>',
                     'required' => FALSE,
                 ])
                 ->add('imageFile', VichFileType::class, [
