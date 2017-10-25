@@ -22,6 +22,9 @@ a:focus {
 .clearfix {
 	clear: both;
 }
+.no-padding {
+	padding: 0!important;
+}
 .margin-bottom-15 {
 	margin-bottom: 15px!important;
 }

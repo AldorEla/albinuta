@@ -310,6 +310,9 @@ html, body {
   padding-right: 0;
   padding-left: 0;
 }
+.no-padding {
+	padding: 0!important;
+}
 .no-padding-left {
 	padding-left: 0;
 }
