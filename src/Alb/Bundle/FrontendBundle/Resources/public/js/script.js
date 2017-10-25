@@ -269,15 +269,21 @@ function initAjaxSearch(form_selector) {
 		var url = form.attr('data-action');
 		// var current_url = location.href.split("=");
 		var keyword = form.find('input[name="keyword"]').attr('value');
+
 		form.on('submit', function(e) {
 			e.preventDefault();
 			$.ajax({
 				url: url, 
 				data: {data: form.serializeArray()},
 				success: function(result){
-				form.closest('.container').html(result);
-				// location.href = current_url[current_url.length-2] + '=' + keyword;
-				  initAjaxSearch('#ajaxSearchForm');
+					console.log(result);
+					if(result == 'no_result') {
+						// Do nothing
+						return false;
+					} else {
+						form.closest('.container').html(result);
+						initAjaxSearch('#ajaxSearchForm');
+					}
 		    }});
 		});
 	}

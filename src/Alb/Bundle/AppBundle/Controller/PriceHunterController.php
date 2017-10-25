@@ -199,7 +199,10 @@ class PriceHunterController extends Controller
         $data = self::convert_form_array($request->get('data'));
         $keyword = $data['keyword'];
         
-        if(!$keyword) return $this->redirectToRoute('price_hunter_index');
+        if(!$keyword) {
+            echo 'no_result';
+            exit;
+        }
         
         $finder = $this->container->get('fos_elastica.finder.app.price_hunter');
         $results = $finder->find($keyword, 1000);
