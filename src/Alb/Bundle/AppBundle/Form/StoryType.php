@@ -18,10 +18,10 @@ class StoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         // $builder->add('title')->add('video', TextType::class, ['required' => false])->add( "content")->add('image', FileType::class, ['required' => false]);
-        $builder->add('title')
-                ->add('video', TextType::class, ['required' => false])
+        $builder->add('title', NULL,  ['attr' => ['placeholder' => 'Enter the title of the story']])
+                ->add('video', TextType::class, ['required' => false, 'attr' => ['placeholder' => 'Enter an embedable video url']])
                 ->add( "content")
-                ->add('image', TextType::class, ['required' => false, 'label' => 'Image', 'attr' => ['readonly' => true]])
+                ->add('image', TextType::class, ['required' => false, 'label' => 'Image', 'attr' => ['readonly' => true, 'placeholder' => 'Click the Browse button to upload']])
                 ->add('imageFile', VichFileType::class, ['required' => false, 'label' => 'Image']
         );
     }
