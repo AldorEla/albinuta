@@ -147,7 +147,7 @@ function initColorboxes() {
 	var colorbox_object = $('.colorbox');
 	
 	if(colorbox_object.length) {
-		$(colorbox_object).colorbox({width: "80%", height: "80%", opacity: "0.85"});
+		// $(colorbox_object).colorbox({width: "80%", height: "80%", opacity: "0.85"});
 	}
 }
 

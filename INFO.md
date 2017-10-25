@@ -34,6 +34,13 @@ SonataAdminBundle, path "/admin"
 Register and login to use "My Space" feature [@TBD]  
 6. My Space:  
 Playground for registered users [@TBD]  
+7. PriceHunter, json content with products provided by an external url
+8. ElasticSearch:
+- Installation guide: https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html
+- Populate using the bundle provoded by FOS:
+```
+console fos:elastica:populate
+```
 
 Development Notes
 ========================================================================================
@@ -58,3 +65,5 @@ Development Notes
  2. Integrate TinyMCE for Story content field
  3. File uploader for images
  4. Change Colour Theme: Integration of 3 basic colour themes [default, dark, light]
+ 5. PriceHunter - import products from Price Hunter url, json content
+ 6. ElasticSearch search for PH products

@@ -14,3 +14,7 @@ price_hunter_import_products:
     path:     /full-import
     defaults: { _controller: "AlbAppBundle:PriceHunter:fullImport" }
     methods:  GET
+price_hunter_search_products:
+    path:     /search/{page}
+    defaults: { _controller: "AlbAppBundle:PriceHunter:searchProducts", page: 1 }
+    methods:  GET

@@ -6,6 +6,7 @@ use Alb\Bundle\AppBundle\Entity\PriceHunter;
 use Alb\Bundle\AppBundle\Repository\PriceHunterRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class PriceHunterController extends Controller
 {
@@ -18,20 +19,6 @@ class PriceHunterController extends Controller
      */
     public function indexAction($page, Request $request)
     {
-    	// Sample of conent from the json document
-		// "title": "Telefon mobil BlackBerry KEYone, Qwerty, 64GB, 4G, Black Edition",
-		// "price": 2999.99,
-		// "link": "https://www.emag.ro/telefon-mobil-blackberry-keyone-qwerty-64gb-4g-black-edition-keyone-black/pd/D9BZCNBBM/",
-		// "date": "14.10.2017",
-		// "image": "",
-		// "price_min": 2999.99,
-		// "price_max": 2999.99
-
-		// $json_content = file_get_contents(self::PRICE_HUNTER_URL);
-		// $products = json_decode($json_content);
-		// $totalProducts = count($products);
-		// $currentPage    = $request->get('page');
-        
         $doctrine       = $this->getDoctrine();
         $em             = $doctrine->getManager();
         $limit          = self::PRODUCTS_LISTING_LIMIT; 
@@ -166,5 +153,21 @@ class PriceHunterController extends Controller
     		echo json_encode('{"response": "Something went wrong, the import has failed!"}');
     	}
     	exit;
+    }
+
+    public function searchProductsAction(Request $request) {
+        $results = [];
+        $keyword = $request->get('keyword');
+        $currentPage    = $request->get('page');
+        
+        if(!$keyword) return $this->redirectToRoute('price_hunter_index');
+        
+        $finder = $this->container->get('fos_elastica.finder.app.price_hunter');
+        $results = $finder->find($keyword, 1000);
+
+        return $this->render('AlbAppBundle:pricehunter:search-results.html.twig', array(
+            'results'    => $results,
+            'currentPage' => $currentPage
+        ));
     }
 }

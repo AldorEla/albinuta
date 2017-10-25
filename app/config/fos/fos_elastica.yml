@@ -1,0 +1,18 @@
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        app:
+            index_name: app_%kernel.environment%
+            types:
+                price_hunter:
+                    properties:
+                        title: ~
+                        price: ~
+                        price_min: ~
+                        price_max: ~
+                    persistence:
+                        driver: orm
+                        model: Alb\Bundle\AppBundle\Entity\PriceHunter
+                        provider: ~
+                        finder: ~
