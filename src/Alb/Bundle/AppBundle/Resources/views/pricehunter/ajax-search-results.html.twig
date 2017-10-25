@@ -1,0 +1,61 @@
+{% block body %}
+    <h1>Products list, provided by Price Hunter</h1>
+    <div class="row">
+        <div class="col-lg-6 text-left">
+            <p class="results">Your search returned {{ results|length }} results</p>
+        </div>
+        <form data-action={{ path('price_hunter_search_products_ajax') }} class="col-lg-6" id="ajaxSearchForm">
+        	<div class="form-group row no-margin padding-bottom-20">
+                <div class="col-sm-10 no-padding">
+                    <input type="text" name="keyword" value="{{ keyword }}" class="form-control">
+                </div>
+                <div class="col-sm-2 no-padding">
+                    <input type="submit" value="Search" class="btn btn-success col-12">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <table id="results" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+            	<th>Nr.</th>
+                <th width="400">Title</th>
+                <th>Price</th>
+                <th>Price min</th>
+                <th>Price max</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+            	<th>Nr.</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Price min</th>
+                <th>Price max</th>
+                <th>Date</th>
+            </tr>
+        </tfoot>
+        <tbody>
+        	{% for i, product in results %}
+	            <tr>
+	            	<td>{{ i+1 }}</td>
+	                <td><a title="{{ product.title|trim }}" href="{{ product.link }}">{{ product.title|trim }}</a></td>
+	                <td>{{ product.price }}</td>
+	                <td>{{ product.price_min }}</td>
+	                <td>{{ product.price_max }}</td>
+	                <td>{{ product.date|date('F d, Y') }}</td>
+	            </tr>
+	        {% endfor %}
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+		    $('#results').DataTable({'bFilter': false, responsive: true});
+		} );
+    </script>
+
+    {# all products | good price | minimum price #}
+{% endblock %}

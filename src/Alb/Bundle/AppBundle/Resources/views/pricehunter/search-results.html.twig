@@ -7,7 +7,7 @@
             <div class="col-lg-6 text-left">
                 <p class="results">Your search returned {{ results|length }} results</p>
             </div>
-            <form action={{ path('price_hunter_search_products') }} class="col-lg-6">
+            <form data-action={{ path('price_hunter_search_products_ajax') }} class="col-lg-6" id="ajaxSearchForm">
             	<div class="form-group row no-margin padding-bottom-20">
                     <div class="col-sm-10 no-padding">
                         <input type="text" name="keyword" value="{{ app.request.get('keyword') }}" class="form-control">
@@ -22,6 +22,7 @@
         <table id="results" class="display" cellspacing="0" width="100%">
 	        <thead>
 	            <tr>
+	            	<th>Nr.</th>
 	                <th width="400">Title</th>
 	                <th>Price</th>
 	                <th>Price min</th>
@@ -31,6 +32,7 @@
 	        </thead>
 	        <tfoot>
 	            <tr>
+	            	<th>Nr.</th>
 	                <th>Title</th>
 	                <th>Price</th>
 	                <th>Price min</th>
@@ -39,8 +41,9 @@
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	        	{% for product in results %}
+	        	{% for i, product in results %}
 		            <tr>
+		            	<td>{{ i+1 }}</td>
 		                <td><a title="{{ product.title|trim }}" href="{{ product.link }}">{{ product.title|trim }}</a></td>
 		                <td>{{ product.price }}</td>
 		                <td>{{ product.price_min }}</td>

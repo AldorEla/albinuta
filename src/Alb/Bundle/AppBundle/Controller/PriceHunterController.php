@@ -22,8 +22,33 @@ class PriceHunterController extends Controller
         $doctrine       = $this->getDoctrine();
         $em             = $doctrine->getManager();
         $limit          = self::PRODUCTS_LISTING_LIMIT; 
+
         $products       = PriceHunterRepository::findAllProducts($em, $page, $limit);
         $totalProducts  = PriceHunterRepository::getTotalPriceHunterItems($em);
+
+        $currentPage    = $request->get('page');
+        
+
+        return $this->render('AlbAppBundle:pricehunter:index.html.twig', array(
+            'products'       => $products,
+            'totalProducts'  => $totalProducts,
+            'currentPage'    => $currentPage,
+        ));
+    }
+
+    /**
+     * Lists all Products provided by Price Hunter.
+     *
+     */
+    public function goodPriceAction($page, Request $request)
+    {
+        $doctrine       = $this->getDoctrine();
+        $em             = $doctrine->getManager();
+        $limit          = self::PRODUCTS_LISTING_LIMIT; 
+        
+        $filters        = ['price_filter' => 'good_price'];
+        $products       = PriceHunterRepository::findAllProducts($em, $page, $limit, $filters);
+        $totalProducts  = PriceHunterRepository::getTotalPriceHunterItems($em, $filters);
 
         $currentPage    = $request->get('page');
         
@@ -158,7 +183,6 @@ class PriceHunterController extends Controller
     public function searchProductsAction(Request $request) {
         $results = [];
         $keyword = $request->get('keyword');
-        $currentPage    = $request->get('page');
         
         if(!$keyword) return $this->redirectToRoute('price_hunter_index');
         
@@ -166,8 +190,39 @@ class PriceHunterController extends Controller
         $results = $finder->find($keyword, 1000);
 
         return $this->render('AlbAppBundle:pricehunter:search-results.html.twig', array(
-            'results'    => $results,
-            'currentPage' => $currentPage
+            'results'    => $results
         ));
+    }
+
+    public function searchProductsAjaxAction(Request $request) {
+        $results = [];
+        $data = self::convert_form_array($request->get('data'));
+        $keyword = $data['keyword'];
+        
+        if(!$keyword) return $this->redirectToRoute('price_hunter_index');
+        
+        $finder = $this->container->get('fos_elastica.finder.app.price_hunter');
+        $results = $finder->find($keyword, 1000);
+
+        return $this->render('AlbAppBundle:pricehunter:ajax-search-results.html.twig', array(
+            'results'    => $results,
+            'keyword' => $keyword
+        ));
+    }
+
+    /**
+     * Helper function
+     *
+     * @param:  array serializedArray - by javascript.serializeArray()
+     * @return: array - key => value
+     */
+    function convert_form_array($serializedArray) {
+        $temp = [];
+        if (is_array($serializedArray) || is_object($serializedArray)) {
+            foreach ($serializedArray as $key => $value) {
+                $temp[$value['name']] = $value['value'];
+            }
+        }
+        return $temp;
     }
 }

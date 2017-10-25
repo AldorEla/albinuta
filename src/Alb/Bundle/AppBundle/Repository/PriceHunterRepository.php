@@ -12,21 +12,26 @@ class PriceHunterRepository extends EntityRepository
 	/**
 	 * Retrieve all products, paginated
 	 */
-	public static function findAllProducts($em, $page = 1, $limit = 2) {
+	public static function findAllProducts($em, $page = 1, $limit = NULL, $filters = []) {
 		if(!$em) return false;
 
 		$products 		= [];
 		$dql 			= 'SELECT ph.title, ph.price, ph.link, ph.price_min, ph.price_max, ph.date FROM AlbAppBundle:PriceHunter ph';
+		if(!empty($filters) && isset($filters['price_filter']) && $filters['price_filter'] == 'good_price') {
+			$dql = 'SELECT ph.title, ph.price, ph.link, ph.price_min, ph.price_max, ph.date FROM AlbAppBundle:PriceHunter ph WHERE ph.price <= ph.price_min';
+		}
     	$products 		= self::paginate($dql, $page, $limit, $em);
 
     	return $products;
 	}
 
-	public static function paginate($dql, $page = 1, $limit = 10, $em)
+	public static function paginate($dql, $page = 1, $limit = NULL, $em)
 	{
-		$query = $em->createQuery($dql)
-					->setFirstResult($limit * ($page - 1)) // Offset
-					->setMaxResults($limit);
+		$query = $em->createQuery($dql);
+		if($limit) {
+			$query->setFirstResult($limit * ($page - 1)) // Offset
+			      ->setMaxResults($limit);
+		}
 
        	$paginator = new Paginator($query, true);
 
@@ -36,12 +41,15 @@ class PriceHunterRepository extends EntityRepository
 	/**
 	 * Retrieve total products pages number
 	 */
-	public static function getTotalPriceHunterItems($em) {
+	public static function getTotalPriceHunterItems($em, $filters = []) {
 		if(!$em) return false;
 
 		$totalItems 	= 0;
 		$result 		= [];
 		$dql			= 'SELECT ph FROM AlbAppBundle:PriceHunter ph';
+		if(!empty($filters) && isset($filters['price_filter']) && $filters['price_filter'] == 'good_price') {
+			$dql = 'SELECT ph FROM AlbAppBundle:PriceHunter ph WHERE ph.price <= ph.price_min';
+		}
 		$result 		= $em->createQuery($dql)->getResult();
     	$totalItems 	= count($result);
 

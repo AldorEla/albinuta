@@ -5,6 +5,13 @@ price_hunter_index:
     requirements:
         page: \d+
 
+price_hunter_good_price:
+    path:     /good-price/{page}
+    defaults: { _controller: "AlbAppBundle:PriceHunter:goodPrice", page: 1 }
+    methods:  GET
+    requirements:
+        page: \d+
+
 price_hunter_json:
     path:     /price-hunter/products.json
     defaults: { _controller: "AlbAppBundle:PriceHunter:json" }
@@ -14,7 +21,13 @@ price_hunter_import_products:
     path:     /full-import
     defaults: { _controller: "AlbAppBundle:PriceHunter:fullImport" }
     methods:  GET
+
 price_hunter_search_products:
     path:     /search/{page}
     defaults: { _controller: "AlbAppBundle:PriceHunter:searchProducts", page: 1 }
-    methods:  GET
+    methods:  [GET, POST]
+
+price_hunter_search_products_ajax:
+    path:     /search-ajax
+    defaults: { _controller: "AlbAppBundle:PriceHunter:searchProductsAjax", page: 1 }
+    methods:  [GET, POST]

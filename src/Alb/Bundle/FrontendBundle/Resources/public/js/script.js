@@ -12,6 +12,7 @@ $(document).ready(function(){
   initChangeColourTheme();
   initAddFileUploadPreview();
   initDatatables();
+  initAjaxSearch('#ajaxSearchForm');
 });
 
 $(window).on('load', function(){
@@ -259,4 +260,26 @@ function initAddFileUploadPreview() {
 function cancelFileupload(this_obj) {
 	$(this_obj).closest('.form-group').find('input[type="file"]').val('');
 	$(this_obj).closest('.selected-element').remove();
+}
+
+// Init Ajax Search
+function initAjaxSearch(form_selector) {
+	var form = $(form_selector);
+	if(form.length) {
+		var url = form.attr('data-action');
+		// var current_url = location.href.split("=");
+		var keyword = form.find('input[name="keyword"]').attr('value');
+		form.on('submit', function(e) {
+			e.preventDefault();
+			$.ajax({
+				url: url, 
+				data: {data: form.serializeArray()},
+				success: function(result){
+				form.closest('.container').html(result);
+				// location.href = current_url[current_url.length-2] + '=' + keyword;
+				  initAjaxSearch('#ajaxSearchForm');
+		    }});
+		});
+	}
+	return false;
 }
