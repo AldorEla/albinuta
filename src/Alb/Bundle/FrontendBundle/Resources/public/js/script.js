@@ -56,7 +56,6 @@ function initBxSliders() {
   // Video Slider
   video_slider = $('.js-video-slider');
   if(video_slider.length) {
-  	console.log(video_slider);
   	videoSlider = video_slider.bxSlider();
   }
 
@@ -276,7 +275,6 @@ function initAjaxSearch(form_selector) {
 				url: url, 
 				data: {data: form.serializeArray()},
 				success: function(result){
-					console.log(result);
 					if(result == 'no_result') {
 						// Do nothing
 						return false;
