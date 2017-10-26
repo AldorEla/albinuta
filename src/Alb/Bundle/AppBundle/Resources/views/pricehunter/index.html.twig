@@ -5,12 +5,13 @@
         <h1>Products list, provided by Price Hunter</h1>
         <div class="row">
             <div class="col-lg-6 text-left">
-                <p class="results">We found {{ totalProducts }} products for you</p>
+                <p class="js-results-text results">We found <strong>{{ totalProducts }}</strong> products for you.</p>
             </div>
-            <form data-action={{ path('price_hunter_search_products_ajax') }} class="col-lg-6" id="ajaxSearchForm">
+            <form data-results-text="We found <strong>{{ totalProducts }}</strong> products for you." data-action={{ path('price_hunter_search_products_ajax') }} data-action-suggestions={{ path('price_hunter_search_products_ajax_suggestions') }} class="col-lg-6" id="ajaxSearchForm">
+                <em class="text-12">Type a keyword and press on Tab to get the suggestions from search.</em>
                 <div class="form-group row no-margin padding-bottom-20">
                     <div class="col-sm-10 no-padding">
-                        <input type="text" name="keyword" value="{{ app.request.get('keyword') }}" class="form-control">
+                        <input type="text" name="keyword" value="{{ app.request.get('keyword') }}" class="form-control" placeholder="Enter keyword">
                     </div>
                     <div class="col-sm-2 no-padding">
                         <input type="submit" value="Search" class="btn btn-success col-12">
@@ -18,25 +19,19 @@
                 </div>
             </form>
         </div>
-
-        <div class="row saved-videos">
-            {% for product in products %}
-                <div class="col-sm-6 col-md-4">
-                    <div class="video-box">
-                        <h5><a title="{{ product.title|trim }}" href="{{ product.link }}">{{ product.title|trim }}</a></h5>
-                        <div class="details-box" data-eq-height>
-                            <p>Price: {{ product.price }}
-                                <br />Price min: {{ product.price_min }}
-                                <br />Price max: {{ product.price_max }}
-                                <br />Date: {{ product.date|date('F d, Y') }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div> 
-
-        {{ render(controller( 'AlbAppBundle:PriceHunter:pagination', {'totalProducts': totalProducts, 'currentPage': currentPage} )) }}
+        <div>Loading...</div>
         {# all products | good price | minimum price #}
     </div> <!-- /container -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Display all the products by triggering the submission of the ajax search form
+            var form = $('#ajaxSearchForm');
+            var results_text = form.attr('data-results-text');
+            form.submit();
+            setTimeout(function() {
+                $('.container').find('.results').html(results_text);
+            }, 500);
+        });
+    </script>
 {% endblock %}

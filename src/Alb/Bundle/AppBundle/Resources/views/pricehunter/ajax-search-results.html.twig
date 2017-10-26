@@ -2,12 +2,18 @@
     <h1>Products list, provided by Price Hunter</h1>
     <div class="row">
         <div class="col-lg-6 text-left">
-            <p class="results">Your search returned {{ results|length }} results</p>
+            <p class="results">
+                {% if keyword|length %}
+                    You have searched by <strong>{{ keyword }}</strong> keyword.<br />
+                {% endif %}
+                Your search returned <strong>{{ results|length }}</strong> results.
+            </p>
         </div>
-        <form data-action={{ path('price_hunter_search_products_ajax') }} class="col-lg-6" id="ajaxSearchForm">
+        <form data-action={{ path('price_hunter_search_products_ajax') }} data-action-suggestions={{ path('price_hunter_search_products_ajax_suggestions') }} class="col-lg-6" id="ajaxSearchForm">
+            <em class="text-12 margin-negative-">Type a keyword and press on Tab to get the suggestions from search.</em>
         	<div class="form-group row no-margin padding-bottom-20">
                 <div class="col-sm-10 no-padding">
-                    <input type="text" name="keyword" value="{{ keyword }}" class="form-control">
+                    <input type="text" name="keyword" value="{{ keyword }}" class="form-control" placeholder="Enter keyword">
                 </div>
                 <div class="col-sm-2 no-padding">
                     <input type="submit" value="Search" class="btn btn-success col-12">

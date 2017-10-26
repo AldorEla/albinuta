@@ -190,7 +190,8 @@ class PriceHunterController extends Controller
         $results = $finder->find($keyword, 1000);
 
         return $this->render('AlbAppBundle:pricehunter:search-results.html.twig', array(
-            'results'    => $results
+            'results'=> $results,
+            'keyword' => $keyword
         ));
     }
 
@@ -199,17 +200,46 @@ class PriceHunterController extends Controller
         $data = self::convert_form_array($request->get('data'));
         $keyword = $data['keyword'];
         
-        if(!$keyword) {
-            echo 'no_result';
-            exit;
+        if(!$keyword || $keyword == ':all') {
+            $doctrine = $this->getDoctrine();
+            $em = $doctrine->getManager();
+            $results = PriceHunterRepository::findAllProducts($em, NULL);
+        } else {
+            $finder = $this->container->get('fos_elastica.finder.app.price_hunter');
+            $results = $finder->find($keyword, 1000);
         }
-        
-        $finder = $this->container->get('fos_elastica.finder.app.price_hunter');
-        $results = $finder->find($keyword, 1000);
 
         return $this->render('AlbAppBundle:pricehunter:ajax-search-results.html.twig', array(
             'results'    => $results,
             'keyword' => $keyword
+        ));
+    }
+
+    public function searchProductsAjaxSuggestionsAction(Request $request) {
+        $results = [];
+        $data = self::convert_form_array($request->get('data'));
+        $keyword = $data['keyword'];
+        
+        if(!$keyword) {
+            echo 'no_result';
+            exit;
+        }
+        $displayLimit = 20;
+        $searchLimit = 1000;
+        
+        $finder = $this->container->get('fos_elastica.finder.app.price_hunter');
+        $totalResults = count($finder->find($keyword, $searchLimit));
+        $results = $finder->find($keyword, $displayLimit);
+
+        if($displayLimit > $totalResults) {
+            $displayLimit = $totalResults;
+        }
+
+        return $this->render('AlbAppBundle:pricehunter:ajax-search-results-suggestions.html.twig', array(
+            'results'    => $results,
+            'keyword' => $keyword,
+            'totalResults' => $totalResults,
+            'displayLimit' => $displayLimit
         ));
     }
 

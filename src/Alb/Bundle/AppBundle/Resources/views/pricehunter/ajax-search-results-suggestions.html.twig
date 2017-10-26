@@ -1,0 +1,16 @@
+{% block body %}
+	<span title="Press here to close the suggestions" class="close-suggestions" onclick="javascript:$('.suggestions-wrapper').remove();">&#10005;</span>
+	<span class="results">Found <strong>{{ totalResults }}</strong> results. 
+	{% if displayLimit > 0 %}Displaying the first <strong>{{ displayLimit }}</strong> results matching <strong>{{ keyword }}</strong> keyword.{% endif %}</span>
+	<ul>
+    	{% for i, product in results %}
+            <li data-index="{{ i+1 }}.">
+                <p>
+                	<a title="{{ product.title|trim }}" href="{{ product.link }}">{{ product.title|trim }}</a>
+                	<br />Price: {{ product.price }} | Price min: {{ product.price_min }} | Price max: {{ product.price_max }} | Date: {{ product.date|date('F d, Y') }}
+            	</p>
+            </li>
+        {% endfor %}
+	</ul>
+    <span><a href="javascript:void(0)" onclick="javascript:$('#ajaxSearchForm').submit();">Show all</a></span>
+{% endblock %}

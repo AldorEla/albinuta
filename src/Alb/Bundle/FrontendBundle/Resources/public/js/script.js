@@ -266,8 +266,9 @@ function initAjaxSearch(form_selector) {
 	var form = $(form_selector);
 	if(form.length) {
 		var url = form.attr('data-action');
-		// var current_url = location.href.split("=");
-		var keyword = form.find('input[name="keyword"]').attr('value');
+		var url_suggestions = form.attr('data-action-suggestions');
+		var keyword_input = form.find('input[name="keyword"]');
+		var keyword = keyword_input.attr('value');
 
 		form.on('submit', function(e) {
 			e.preventDefault();
@@ -283,6 +284,32 @@ function initAjaxSearch(form_selector) {
 						initAjaxSearch('#ajaxSearchForm');
 					}
 		    }});
+		});
+
+		keyword_input.on('blur', function(e) {
+			var $this = $(this);
+			setTimeout(function() {
+				var trimmed_value = $.trim($this.val());
+				if(trimmed_value.length >= 2) {
+					$.ajax({
+						url: url_suggestions, 
+						data: {data: form.serializeArray()},
+						success: function(result){
+							if(result == 'no_result') {
+								// Do nothing
+								return false;
+							} else {
+								$('.suggestions-wrapper').remove();
+								var suggestions = $('<\div>');
+								suggestions.addClass('suggestions-wrapper');
+								form.append(suggestions);
+								$('.suggestions-wrapper').html(result);
+								initAjaxSearch('#ajaxSearchForm');
+							}
+				    }});
+				}
+			}, 10);
+			return false;
 		});
 	}
 	return false;
