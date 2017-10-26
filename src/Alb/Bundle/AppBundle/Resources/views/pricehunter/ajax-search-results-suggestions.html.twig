@@ -4,13 +4,17 @@
 	{% if displayLimit > 0 %}Displaying the first <strong>{{ displayLimit }}</strong> results matching <strong>{{ keyword }}</strong> keyword.{% endif %}</span>
 	<ul>
     	{% for i, product in results %}
-            <li data-index="{{ i+1 }}.">
-                <p>
-                	<a title="{{ product.title|trim }}" href="{{ product.link }}">{{ product.title|trim }}</a>
-                	<br />Price: {{ product.price }} | Price min: {{ product.price_min }} | Price max: {{ product.price_max }} | Date: {{ product.date|date('F d, Y') }}
-            	</p>
+            <li class="result-element" data-index="{{ i+1 }}.">
+                <a class="color-inherit" href="{{ product.link }}">
+                	<h5 class="format-inherit" title="{{ product.title|trim }}">{{ product.title|trim }}</h5>
+                	<span class="color-gray-dark">Price: {{ product.price }} | Price min: {{ product.price_min }} | Price max: {{ product.price_max }} | Date: {{ product.date|date('F d, Y') }}</span>
+            	</a>
             </li>
         {% endfor %}
 	</ul>
-    <span><a href="javascript:void(0)" onclick="javascript:$('#ajaxSearchForm').submit();">Show all</a></span>
+	{% if totalResults > 0 %}
+    	<span><a href="javascript:void(0)" onclick="javascript:$('#ajaxSearchForm').submit();">Show all</a></span>
+    {% else %}
+    	<span>Nothing to show</span>
+    {% endif %}
 {% endblock %}

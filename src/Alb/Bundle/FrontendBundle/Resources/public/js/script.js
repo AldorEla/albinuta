@@ -304,6 +304,9 @@ function initAjaxSearch(form_selector) {
 								suggestions.addClass('suggestions-wrapper');
 								form.append(suggestions);
 								$('.suggestions-wrapper').html(result);
+								$('.suggestions-wrapper').find('.result-element').first().addClass('selected').find('a').first().focus();
+								// Next/Prev element using up/down arrows
+								focusResultElement();
 								initAjaxSearch('#ajaxSearchForm');
 							}
 				    }});
@@ -313,4 +316,25 @@ function initAjaxSearch(form_selector) {
 		});
 	}
 	return false;
+}
+function focusResultElement() {
+	$(document).keydown(function(e) {
+		var e = e;
+		if (e.keyCode == 40) {
+			$('.suggestions-wrapper').find('.result-element').each(function(i) {
+				if($(this).find('a:focus')) {
+					$('.result-element').removeClass('selected');
+					$(this).next().addClass('selected').find('a').focus();
+				}
+			});
+		}
+		if (e.keyCode == 38) {
+			$('.suggestions-wrapper').find('.result-element').each(function(i) {
+				if($(this).find('a:focus').length) {
+					$('.result-element').removeClass('selected');
+		    		$(this).prev().addClass('selected').find('a').focus();
+				}
+			});
+		}
+	});
 }
