@@ -311,7 +311,7 @@ function initAjaxSearch(form_selector) {
 							}
 				    }});
 				}
-			}, 10);
+			}, 200);
 			return false;
 		});
 	}

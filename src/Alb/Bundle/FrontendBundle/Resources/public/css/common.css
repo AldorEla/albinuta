@@ -152,6 +152,7 @@ a:focus {
 .suggestions-wrapper ul li {
     border-top: 1px solid #999;
     transition: all 0.2s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.02);
 }
 .suggestions-wrapper ul li:nth-child(odd) {
 	background-color: rgba(0, 0, 0, 0.05);
