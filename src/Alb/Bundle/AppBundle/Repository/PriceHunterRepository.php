@@ -62,45 +62,26 @@ class PriceHunterRepository extends EntityRepository
 	public static function fullImport($em, $data = []) {
 		if(!$em || empty($data)) return false;
 
-
-		foreach($data as $key => $product) {
-			$existing_product = self::getExistingProductByTitle($em, $product->title);
-			if(!$existing_product) {
-				// Insert new product
-				$product_entity = new PriceHunter();
-				$product_entity->setTitle($product->title);
-				$product_entity->setPrice($product->price);
-				$product_entity->setPriceMin($product->price_min);
-				$product_entity->setPriceMax($product->price_max);
-				$product_entity->setLink($product->link);
-				$product_entity->setDate(new \DateTime($product->date));
-				$product_entity->setImage($product->image);
-				$em->persist($product_entity);
-				$em->flush();
-			} else {
-				// Update existing product
-				$product_entity = $em->find('AlbAppBundle:PriceHunter', $existing_product);
-				if($product_entity->getTitle() != $product->title) {
-					$product_entity->setTitle($product->title);
-				}
-				if($product_entity->getPrice() != $product->price) {
-					$product_entity->setPrice($product->price);
-				}
-				if($product_entity->getPriceMin() != $product->price_min) {
-					$product_entity->setPriceMin($product->price_min);
-				}
-				if($product_entity->getPriceMax() != $product->price_max) {
-					$product_entity->setPriceMax($product->price_max);
-				}
-				if($product_entity->getLink() != $product->link) {
-					$product_entity->setLink($product->link);
-				}
-				$product_entity->setDate(new \DateTime($product->date));
-				$product_entity->setImage($product->image);
-				$em->persist($product_entity);
-				$em->flush();
-			}
+		$batchSize = 20;
+		$i = 0;
+		foreach ($data as $key => $product) {
+		    $product_entity = new PriceHunter();
+			$product_entity->setTitle($product->title);
+			$product_entity->setPrice($product->price);
+			$product_entity->setPriceMin($product->price_min);
+			$product_entity->setPriceMax($product->price_max);
+			$product_entity->setLink($product->link);
+			$product_entity->setDate(new \DateTime($product->date));
+			$product_entity->setImage($product->image);
+			$em->persist($product_entity);
+		    if (($i % $batchSize) === 0) {
+		        $em->flush(); // Executes all updates.
+		        $em->clear(); // Detaches all objects from Doctrine!
+		    }
+		    ++$i;
 		}
+		$em->flush();
+		$em->clear(); // Detaches all objects from Doctrine!
 	}
 
 	/**

@@ -172,10 +172,11 @@ class PriceHunterController extends Controller
 	        PriceHunterRepository::fullImport($em, $import_data);
     		$imported_products = true;
     	}
+
     	if($imported_products) {
-    		echo json_encode('{"response": "All products have benn successfully imported from Price Hunter!"}');
+            echo  "                                                                      " . "\n" . "   " . count($products) . " products have benn successfully imported from Price Hunter!   " . "\n" . "                                                                      " . "\n";
     	} else {
-    		echo json_encode('{"response": "Something went wrong, the import has failed!"}');
+    		echo "Something went wrong, the import has failed!" . "\n";
     	}
     	exit;
     }
