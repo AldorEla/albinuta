@@ -14,9 +14,8 @@ a:focus {
 	text-decoration: none;
 	outline: medium none;
 }
-.result-element.selected a:first-child {
-	display: block;
-	color: rgba(255, 69, 0, 1);
+.color-black {
+	color: #000;
 }
 .format-inherit {
 	margin: 0;
@@ -116,9 +115,6 @@ a:focus {
 	color: #555;
 	font-size: 12px;
 }
-.suggestions-wrapper a {
-	color: green;
-}
 .suggestions-wrapper {
 	position: absolute;
 	left: auto;
@@ -145,10 +141,16 @@ a:focus {
 	border-top: 1px solid #333;
 	border-bottom: 1px solid #333;
 }
+.suggestions-wrapper a {
+	color: green;
+}
+.suggestions-wrapper li a {
+	display: block;
+	padding-bottom: 5px;
+    padding-top: 5px;
+}
 .suggestions-wrapper ul li {
     border-top: 1px solid #999;
-    padding-bottom: 5px;
-    padding-top: 5px;
     transition: all 0.2s ease-in-out;
 }
 .suggestions-wrapper ul li:nth-child(odd) {
@@ -169,10 +171,17 @@ a:focus {
 	content: attr(data-index);
 	color: green;
 	font-size: 14px;
-	line-height: 1.285;
+	line-height: 1;
 	font-weight: 700;
 	float: left;
 	margin-right: 5px;
+	margin-top: 6px;
+}
+.suggestions-wrapper .result-element.selected {
+	background-color: lightblue;
+}
+.suggestions-wrapper .result-element.selected a:first-child {
+	color: darkblue;
 }
 .close-suggestions {
 	cursor: pointer;
