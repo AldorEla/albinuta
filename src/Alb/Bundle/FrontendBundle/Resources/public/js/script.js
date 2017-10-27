@@ -270,6 +270,7 @@ function initAjaxSearch(form_selector) {
 		var keyword_input = form.find('input[name="keyword"]');
 		var keyword = keyword_input.attr('value');
 
+		// On form submit
 		form.on('submit', function(e) {
 			e.preventDefault();
 			$.ajax({
@@ -286,39 +287,44 @@ function initAjaxSearch(form_selector) {
 		    }});
 		});
 
-		keyword_input.on('blur', function(e) {
-			var $this = $(this);
-			setTimeout(function() {
-				var trimmed_value = $.trim($this.val());
-				if(trimmed_value.length >= 2) {
-					$.ajax({
-						url: url_suggestions, 
-						data: {data: form.serializeArray()},
-						success: function(result){
-							if(result == 'no_result') {
-								// Do nothing
-								return false;
-							} else {
-								$('.suggestions-wrapper').remove();
-								var suggestions = $('<\div>');
-								suggestions.addClass('suggestions-wrapper');
-								form.append(suggestions);
-								$('.suggestions-wrapper').html(result);
-								$('.suggestions-wrapper').find('.result-element').first().addClass('selected').find('a').first().focus();
-								// Next/Prev element using up/down arrows
-								focusResultElement();
-								initAjaxSearch('#ajaxSearchForm');
-							}
-				    }});
-				}
-			}, 200);
-			return false;
+		// On tab press
+		keyword_input.on('blur keydown', function(e) {
+			var keyCode = e.keyCode || e.which; 
+
+  			if (keyCode == 9) { 
+				var $this = $(this);
+				setTimeout(function() {
+					var trimmed_value = $.trim($this.val());
+					if(trimmed_value.length >= 2) {
+						$.ajax({
+							url: url_suggestions, 
+							data: {data: form.serializeArray()},
+							success: function(result){
+								if(result == 'no_result') {
+									// Do nothing
+									return false;
+								} else {
+									$('.suggestions-wrapper').remove();
+									var suggestions = $('<\div>');
+									suggestions.addClass('suggestions-wrapper');
+									form.append(suggestions);
+									$('.suggestions-wrapper').html(result);
+									$('.suggestions-wrapper').find('.result-element').first().addClass('selected').find('a').first().focus();
+									// Next/Prev element using up/down arrows
+									focusResultElement();
+									initAjaxSearch('#ajaxSearchForm');
+								}
+					    }});
+					}
+				}, 200);
+				return false;
+			}
 		});
 	}
 	return false;
 }
 function focusResultElement() {
-	$(document).unbind().keydown(function(e) {
+	$('.suggestions-wrapper').unbind().keydown(function(e) {
 		var e = e;
 		
 		$('.suggestions-wrapper').find('.result-element').each(function(i, v) {
