@@ -454,6 +454,8 @@ a.disabled {
 	height: 60vh;
 	overflow: hidden;
 	transition: all 0.5s ease-in-out;
+	position: relative;
+	z-index: 0;
 }
 .hero-banner::before {
 	content: "";
