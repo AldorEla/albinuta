@@ -48,6 +48,12 @@ a:focus {
 .text-14 {
 	font-size: 14px;
 }
+.text-statuscode-403 {
+	color: #961000!important;
+}
+.text-statuscode-404 {
+	color: #ca6000!important;
+}
 .btn {
 	cursor: pointer;
 }
@@ -209,7 +215,67 @@ a:focus {
 .close-suggestions:hover {
 	color: #333;
 }
+.custom-arrow {
+    display: inline-block;
+    padding: 0px 5px;
+    margin: 0 2px;
+    border: 1px solid;
+    border-left: none;
+    border-right: none;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    font-weight: bold;
+}
+.custom-arrow:hover {
+	color: green;
+}
 /* - Search suggestions wrapper */
+
+/* + Footer */
+.footer p {
+	margin-bottom: 0;
+	padding-bottom: 1rem;
+}
+main p:last-child {
+	margin-bottom: 0;
+	padding-bottom: 1rem;
+}
+/* - Footer */
+
+/* + Status Codes Error Pages */
+.exception-title,
+.exception-message {
+	border-width: 0;
+	border-style: solid;
+	border-radius: 10px;
+	/*background: #f2f2f2;*/
+	margin: 20px 0;
+	padding: 20px;
+}
+.exception-title, 
+.exception-message {
+	border-color: #777;
+	color: #333;
+}
+.exception-message {
+    background: rgba(0, 0, 0, 0.15);
+}
+.exception-title {
+    background: rgba(0, 0, 0, 0.05);
+}
+.exception-title {
+	border-top-width: 1px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	margin-bottom: 0;
+}
+.exception-message {
+	border-bottom-width: 1px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	margin-top: 0;
+}
+/* - Status Codes Error Pages */
 /* ###### Common Style ###### */
 
 /* ================================== */
@@ -239,3 +305,32 @@ a:focus {
 /* ================================== */
 /* ##### [-] MOBILE RESOLUTIONS ##### */
 /* ================================== */
+
+/* + Animate */
+.flash-403 {
+  	-webkit-animation-name: flash403;
+  	animation: flash403 5s infinite;
+}
+@-webkit-keyframes flash403 {
+  	from, 50%, to {
+    	color: #961000;
+  	}
+
+  	25%, 75% {
+    	color: #000;
+  	}
+}
+.flash-404 {
+  	-webkit-animation-name: flash404;
+  	animation: flash404 5s infinite;
+}
+@-webkit-keyframes flash404 {
+  	from, 50%, to {
+    	color: #ca6000;
+  	}
+
+  	25%, 75% {
+    	color: #000;
+  	}
+}
+/* - Animate */

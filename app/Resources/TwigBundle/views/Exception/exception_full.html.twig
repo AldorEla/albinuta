@@ -1,0 +1,24 @@
+{% extends 'frontend.html.twig' %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div class="container">
+					<br /><br />
+					{% if app.request.get('exception').statusCode == 404 %}
+					    <h1 class="exception-title"><span class="fa fa-circle flash-404 text-12"></span> <strong class="flash-404">{{ app.request.get('exception').statusCode }}</strong> Page not found</h1>
+					    <p class="exception-message">The requested page couldn't be located. Checkout for any URL
+					        misspelling or <a href="{{ path('alb_frontend_homepage') }}">return to the homepage</a>.
+					    </p>
+					{% endif %}
+
+					{% if app.request.get('exception').statusCode == 403 %}
+					    <h1 class="exception-title"><span class="fa fa-circle flash-403 text-12"></span> <strong class="flash-403">{{ app.request.get('exception').statusCode }}</strong> Access denied</h1>
+					    <p class="exception-message">You do not have permissions to access this page.</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,16 +1,3 @@
-{% set default_selected = '' %}
-{% set dark_selected = '' %}
-{% set light_selected = '' %}
-{% if app.request.cookies.get('colour-theme')|length and app.request.cookies.get('colour-theme') ==  '/bundles/albfrontend/css/style.css' %}
-    {% set default_selected = ' selected' %}
-{% endif %}
-{% if app.request.cookies.get('colour-theme')|length and app.request.cookies.get('colour-theme') ==  '/bundles/albfrontend/css/colour-theme/theme-dark.css' %}
-    {% set dark_selected = ' selected' %}
-{% endif %}
-{% if app.request.cookies.get('colour-theme')|length and app.request.cookies.get('colour-theme') ==  '/bundles/albfrontend/css/colour-theme/theme-light.css' %}
-    {% set light_selected = ' selected' %}
-{% endif %}
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -49,53 +36,15 @@
             <div class="row">
                 <div class="col">
                     <div class="header clearfix">
-                        <span class="js-hamburger hamburger" data-closed="&#10005;" data-open="&#9776;">&#9776;</span>
-                        <nav>
-                            {% set active_stories = "" %}
-                            {% if app.request.get('_route') == 'story_index' %}
-                                {% set active_stories=" active" %}
-                            {% endif %}
-                            {% set active_price_hunter="" %}
-                            {% if app.request.get('_route') == 'price_hunter_index' %}
-                                {% set active_price_hunter = " active" %}
-                            {% endif %}
-                            <ul class="nav nav-pills float-right">
-                                <li class="nav-item">
-                                    <a class="nav-link{{active_stories}}" href="{{ path('story_index') }}">Stories</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link{{active_price_hunter}}" href="{{ path('price_hunter_index') }}">Price Hunter</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
-                                </li>
-                                {% if is_granted('ROLE_USER') %}
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Logout</a>
-                                    </li>
-                                {% else %}
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Register</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ path('fos_user_security_login') }}">Login</a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
+                        {% include 'includes/main-menu.html.twig' %}
+
                         <h3 class="text-muted"><a title="Albinuta's Home" class="logo" href="{{ path('alb_frontend_homepage') }}"><img height="57" src="/images/bee-gif.gif" /> Albinuta</a></h3>
                     </div>
                 </div>
             </div>
         </div>
         <main>{% block body %}{% endblock %}</main>
-        <aside class="change-theme-container" title="Change Colour Theme">
-            <select class="form-control js-change-colour-theme">
-                <option{{ default_selected }} value="/bundles/albfrontend/css/style.css">Default Theme</option>
-                <option{{ dark_selected }} value="/bundles/albfrontend/css/colour-theme/theme-dark.css">Dark Theme</option>
-                <option{{ light_selected }} value="/bundles/albfrontend/css/colour-theme/theme-light.css">Light Theme</option>
-            </select>&nbsp;&nbsp;<img src="{{ asset('bundles/albfrontend/images/defaults/palette-icon.png') }}" height="25" />
-        </aside>
+        {% include 'includes/change-theme-container.html.twig' %}
         <footer class="footer">
             <p>&copy; Albinuta {{ "now"|date("Y") }}</p>
         </footer>

@@ -327,27 +327,47 @@ function focusResultElement() {
 	$('.suggestions-wrapper').unbind().keydown(function(e) {
 		var e = e;
 		
-		$('.suggestions-wrapper').find('.result-element').each(function(i, v) {
-			if (e.keyCode == 40) {
-				if($('.suggestions-wrapper').find('.result-element').length == $(this).data('index').match(/\d+/)) {
-					return false;
-				}
-				if($(this).find('a:focus').length) {
-					$('.result-element').removeClass('selected');
-					$(this).next().addClass('selected').find('a').focus();
-					return false;
-				}
+		setSelectedSuggestion(e);
+	});
+
+	$('.js-up').unbind().on('click', function(e) {
+		console.log('Here up!');
+		if($('.suggestions-wrapper').find('.selected').prev().length) {
+			$('.suggestions-wrapper').find('.selected').prev().addClass('selected').find('a').focus();
+			$('.suggestions-wrapper').find('.selected').next().removeClass('selected');
+		}
+	});
+
+	$('.js-down').unbind().on('click', function(e) {
+		console.log('Here down!');
+		if($('.suggestions-wrapper').find('.selected').next().length) {
+			$('.suggestions-wrapper').find('.selected').next().addClass('selected').find('a').focus();
+			$('.suggestions-wrapper').find('.selected').prev().removeClass('selected');
+		}
+	});
+}
+
+function setSelectedSuggestion(e) {
+	$('.suggestions-wrapper').find('.result-element').each(function(i, v) {
+		if (e.keyCode == 40) {
+			if($('.suggestions-wrapper').find('.result-element').length == $(this).data('index').match(/\d+/)) {
+				return false;
 			}
-			if (e.keyCode == 38) {
-				if($('.suggestions-wrapper').find('.result-element.selected').data('index').match(/\d+/) == 1) {
-					return false;
-				}
-				if($(this).find('a:focus').length) {
-					$('.result-element').removeClass('selected');
-		    		$(this).prev().addClass('selected').find('a').focus();
-		    		return false;
-				}
+			if($(this).find('a:focus').length) {
+				$('.result-element').removeClass('selected');
+				$(this).next().addClass('selected').find('a').focus();
+				return false;
 			}
-		});
+		}
+		if (e.keyCode == 38) {
+			if($('.suggestions-wrapper').find('.result-element.selected').data('index').match(/\d+/) == 1) {
+				return false;
+			}
+			if($(this).find('a:focus').length) {
+				$('.result-element').removeClass('selected');
+	    		$(this).prev().addClass('selected').find('a').focus();
+	    		return false;
+			}
+		}
 	});
 }

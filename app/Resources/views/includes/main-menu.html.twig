@@ -1,0 +1,48 @@
+{% set active_stories = "" %}
+{% if app.request.get('_route') == 'story_index' %}
+    {% set active_stories=" active" %}
+{% endif %}
+{% set active_price_hunter="" %}
+{% if app.request.get('_route') == 'price_hunter_index' %}
+    {% set active_price_hunter = " active" %}
+{% endif %}
+{% set active_register="" %}
+{% if app.request.get('_route') == 'fos_user_registration_register' %}
+    {% set active_register = " active" %}
+{% endif %}
+{% set active_login="" %}
+{% if app.request.get('_route') == 'fos_user_security_login' %}
+    {% set active_login = " active" %}
+{% endif %}
+
+<span class="js-hamburger hamburger" data-closed="&#10005;" data-open="&#9776;">&#9776;</span>
+<nav>
+    <ul class="nav nav-pills float-right">
+        <li class="nav-item">
+            <a class="nav-link{{active_stories}}" href="{{ path('story_index') }}">Stories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link{{active_price_hunter}}" href="{{ path('price_hunter_index') }}">Price Hunter</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+        </li>
+        {% if is_granted('ROLE_USER') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Logout</a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('sonata_admin_dashboard') }}">Admin</a>
+                </li>
+            {% endif %}
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link{{ active_register }}" href="{{ path('fos_user_registration_register') }}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{{ active_login }}" href="{{ path('fos_user_security_login') }}">Login</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

@@ -529,6 +529,18 @@ table.dataTable.display tbody tr:hover.even>.sorting_1,
  }
 /* - Datatables Custom Style */
 
+.exception-title, 
+.exception-message {
+    border-color: #fff;
+    color: #fff;
+}
+.exception-message {
+    background: rgba(255, 255, 255, 0.15);
+}
+.exception-title {
+    background: rgba(255, 255, 255, 0.25);
+}
+
 /* ================================== */
 /* ##### [+] MOBILE RESOLUTIONS ##### */
 /* ================================== */
@@ -661,3 +673,32 @@ table.dataTable.display tbody tr:hover.even>.sorting_1,
 /* ================================== */
 /* ##### [-] MOBILE RESOLUTIONS ##### */
 /* ================================== */
+
+/* + Animate */
+.flash-403 {
+  	-webkit-animation-name: flash403;
+  	animation: flash403 5s infinite;
+}
+@-webkit-keyframes flash403 {
+  	from, 50%, to {
+    	color: #961000;
+  	}
+
+  	25%, 75% {
+    	color: #fff;
+  	}
+}
+.flash-404 {
+  	-webkit-animation-name: flash404;
+  	animation: flash404 5s infinite;
+}
+@-webkit-keyframes flash404 {
+  	from, 50%, to {
+    	color: #ca6000;
+  	}
+
+  	25%, 75% {
+    	color: #fff;
+  	}
+}
+/* - Animate */

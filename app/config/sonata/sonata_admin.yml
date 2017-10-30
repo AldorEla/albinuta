@@ -9,6 +9,14 @@ sonata_admin:
                     - admin.category
                     - admin.blog_post
                     - admin.story
+
+            pricehunter:
+                label:                "Price Hunter"
+                icon:                 '<i class="fa fa-cog"></i>'
+                items:
+                    - admin.category
+                    - admin.blog_post
+                    - admin.story
 sonata_block:
     default_contexts: [cms]
     blocks:
