@@ -69,6 +69,18 @@
                                 <li class="nav-item">
                                 <a class="nav-link" href="#">Contact</a>
                                 </li>
+                                {% if is_granted('ROLE_USER') %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Logout</a>
+                                    </li>
+                                {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Register</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('fos_user_security_login') }}">Login</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </nav>
                         <h3 class="text-muted"><a title="Albinuta's Home" class="logo" href="{{ path('alb_frontend_homepage') }}"><img height="57" src="/images/bee-gif.gif" /> Albinuta</a></h3>

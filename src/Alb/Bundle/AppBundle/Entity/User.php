@@ -2,8 +2,9 @@
 
 namespace Alb\Bundle\AppBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use Doctrine\ORM\Mapping as ORM; // doctrine orm annotations
 use FOS\UserBundle\Model\User as BaseUser;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -22,5 +23,15 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

@@ -1,3 +1,7 @@
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 alb_app:
     resource: "@AlbAppBundle/Resources/config/routing.yml"
     prefix:   /
@@ -30,6 +34,3 @@ gallery:
 media:
     resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
     prefix: /media
-
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
