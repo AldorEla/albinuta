@@ -531,6 +531,7 @@ table.dataTable.display tbody tr:hover.even>.sorting_1,
  }
 /* - Datatables Custom Style */
 
+/* + Exceptions */
 .exception-title, 
 .exception-message {
     border-color: #fff;
@@ -542,6 +543,13 @@ table.dataTable.display tbody tr:hover.even>.sorting_1,
 .exception-title {
     background: rgba(255, 255, 255, 0.25);
 }
+/* - Exceptions */
+
+/* + Profile pages */
+.inline-edit-link {
+    background: rgba(0, 0, 0, 0.5);
+}
+/* - Profile pages */
 
 /* ================================== */
 /* ##### [+] MOBILE RESOLUTIONS ##### */
