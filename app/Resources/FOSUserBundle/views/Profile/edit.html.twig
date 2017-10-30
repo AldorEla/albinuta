@@ -1,0 +1,16 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+	{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+		<div class="text-left">
+			<h1>Edit user profile <a class="inline-edit-link" href="{{ path('fos_user_profile_show') }}">Show</a></h1>
+	    	{{ form_widget(form) }}
+		</div>
+
+	    <div class="text-center">
+	        <input class="btn btn-primary col-md-6" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+	    </div>
+	{{ form_end(form) }}
+{% endblock %}

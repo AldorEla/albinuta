@@ -276,6 +276,18 @@ main p:last-child {
 	margin-top: 0;
 }
 /* - Status Codes Error Pages */
+
+/* + Profile pages */
+.inline-edit-link {
+    display: inline-block;
+    margin-top: -15px;
+    padding: 15px 20px;
+    text-align: right;
+    float: right;
+    background: rgba(0, 0, 0, 0.5);
+    clear: right;
+}
+/* - Profile pages */
 /* ###### Common Style ###### */
 
 /* ================================== */

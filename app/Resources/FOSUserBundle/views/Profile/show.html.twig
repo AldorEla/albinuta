@@ -1,0 +1,8 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+	<div class="text-left">
+		<h1>User profile <a class="inline-edit-link" href="{{ path('fos_user_profile_edit') }}">Edit</a></h1>
+		{% include "@FOSUser/Profile/show_content.html.twig" %}
+	</div>
+{% endblock fos_user_content %}

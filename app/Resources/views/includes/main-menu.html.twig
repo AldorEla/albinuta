@@ -14,6 +14,10 @@
 {% if app.request.get('_route') == 'fos_user_security_login' %}
     {% set active_login = " active" %}
 {% endif %}
+{% set active_my_profile="" %}
+{% if app.request.get('_route') == 'fos_user_profile_show' or app.request.get('_route') == 'fos_user_profile_edit' %}
+    {% set active_my_profile = " active" %}
+{% endif %}
 
 <span class="js-hamburger hamburger" data-closed="&#10005;" data-open="&#9776;">&#9776;</span>
 <nav>
@@ -24,10 +28,10 @@
         <li class="nav-item">
             <a class="nav-link{{active_price_hunter}}" href="{{ path('price_hunter_index') }}">Price Hunter</a>
         </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
-        </li>
         {% if is_granted('ROLE_USER') %}
+            <li class="nav-item">
+                <a class="nav-link{{ active_my_profile }}" href="{{ path('fos_user_profile_show') }}">My Profile</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Logout</a>
             </li>
