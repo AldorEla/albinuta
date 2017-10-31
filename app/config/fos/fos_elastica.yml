@@ -16,3 +16,16 @@ fos_elastica:
                         model: Alb\Bundle\AppBundle\Entity\PriceHunter
                         provider: ~
                         finder: ~
+                story:
+                    properties:
+                        title: ~
+                        content: ~
+                        language: ~
+                        recommended_age: ~
+                        type: ~
+                        genre: ~
+                    persistence:
+                        driver: orm
+                        model: Alb\Bundle\AppBundle\Entity\Story
+                        provider: ~
+                        finder: ~

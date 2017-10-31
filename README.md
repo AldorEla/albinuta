@@ -41,6 +41,9 @@ Playground for registered users [@TBD]
 ```
 console fos:elastica:populate
 ```
+## Story filters with Elastic (Facets) Aggregations
+> Fields: ``content_language``, ``recommended_age``, ``recommended_gender``, ``genre``.  
+> Doctrine integration: add relational table for story table.
 
 Development Notes
 ========================================================================================
@@ -59,6 +62,7 @@ Development Notes
 10. Clone Story - listing page [@TBD]
 11. Save as new - edit page [@TBD]
 12. My Space - for authenticated user [@TBD]
+13. Story filters with Elastic Search facets [aggregations]
 
 ## Feature integrations
  1. Animate logo horizontally

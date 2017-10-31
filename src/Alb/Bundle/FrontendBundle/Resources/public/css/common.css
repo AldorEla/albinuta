@@ -288,6 +288,14 @@ main p:last-child {
     clear: right;
 }
 /* - Profile pages */
+
+/* + Show Story */
+.title-filters {
+	font-size: 10px;
+	color: #999;
+	text-transform: capitalize;
+}
+/* - Show Story */
 /* ###### Common Style ###### */
 
 /* ================================== */

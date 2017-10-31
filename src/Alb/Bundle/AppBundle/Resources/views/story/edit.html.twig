@@ -8,7 +8,7 @@
 
         {{ form_start(edit_form) }}
             <div id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="row">
+                <div class="row padding-bottom-20">
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-header" role="tab" id="headingOne">
@@ -73,6 +73,50 @@
                                         {# Include content with Rich Text Editor #}
                                         {{ form_widget( edit_form.content ) }}
                                         {{ tinymce_init() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingThree">
+                                <h5 class="mb-0">
+                                    <strong class="text-uppercase text-14">Filters</strong>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse show" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="row no-margin">
+                                    <div class="card-block col-md-6 col-lg-3">
+                                        <div class="form-group">
+                                            {{ form_label(edit_form.language) }}
+                                            {{ form_widget(edit_form.language) }}
+                                            {{ form_errors(edit_form.language) }}
+                                        </div>
+                                    </div>
+                                    <div class="card-block col-md-6 col-lg-3">
+                                        <div class="form-group">
+                                            {{ form_label(edit_form.type) }}
+                                            {{ form_widget(edit_form.type) }}
+                                            {{ form_errors(edit_form.type) }}
+                                        </div>
+                                    </div>
+                                    <div class="card-block col-md-6 col-lg-3">
+                                        <div class="form-group">
+                                            {{ form_label(edit_form.genre) }}
+                                            {{ form_widget(edit_form.genre) }}
+                                            {{ form_errors(edit_form.genre) }}
+                                        </div>
+                                    </div>
+                                    <div class="card-block col-md-6 col-lg-3">
+                                        <div class="form-group">
+                                            {{ form_label(edit_form.recommended_age) }}
+                                            {{ form_widget(edit_form.recommended_age) }}
+                                            {{ form_errors(edit_form.recommended_age) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

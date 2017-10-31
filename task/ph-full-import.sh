@@ -50,7 +50,7 @@ echo "${blue}===================================================================
 
 
 # populate search
-$console fos:elastica:populate
+$console fos:elastica:populate --index=app --type=price_hunter --batch-size=400
 
 # clear cache for both prod and dev env
 $console cache:clear --env=prod

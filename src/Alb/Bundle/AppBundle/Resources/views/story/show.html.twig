@@ -25,6 +25,13 @@
             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                 <h1>
                     <span class="text-uppercase">{{ story.title }}</span>
+                    <br />
+                    <span class="title-filters">
+                        Video Genre: <strong>{{ story.genre ? story.genre : '-' }}</strong> | 
+                        Video Type: <strong>{{ story.type ? story.type : '-' }}</strong> | 
+                        Recommended Age: <strong>{{ story.recommendedAge ? story.recommendedAge : '-' }}</strong> | 
+                        Video Langugage: <strong>{{ story.language ? story.language : '-' }}</strong>
+                    </span>
                 </h1>
                 {{ story.content|raw }}
             </div>

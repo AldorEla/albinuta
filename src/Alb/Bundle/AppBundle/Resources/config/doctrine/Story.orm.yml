@@ -20,6 +20,22 @@ Alb\Bundle\AppBundle\Entity\Story:
                 default: 'maxresdefault.jpg'
         content:
             type: text
+        language:
+            nullable: true
+            type: string
+            length: 100
+        recommended_age:
+            nullable: true
+            type: string
+            length: 255
+        type:
+            nullable: true
+            type: string
+            length: 200
+        genre:
+            nullable: true
+            type: string
+            length: 255
         created_at:
             type: datetime
             gedmo:

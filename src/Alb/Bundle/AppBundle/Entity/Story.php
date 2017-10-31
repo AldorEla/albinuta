@@ -290,4 +290,120 @@ class Story
     {
         return $this->imageSize;
     }
+    /**
+     * @var string
+     */
+    private $language;
+
+    /**
+     * @var string
+     */
+    private $recommended_age;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var string
+     */
+    private $genre;
+
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     *
+     * @return Story
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * Set recommendedAge
+     *
+     * @param string $recommendedAge
+     *
+     * @return Story
+     */
+    public function setRecommendedAge($recommendedAge)
+    {
+        $this->recommended_age = $recommendedAge;
+
+        return $this;
+    }
+
+    /**
+     * Get recommendedAge
+     *
+     * @return string
+     */
+    public function getRecommendedAge()
+    {
+        return $this->recommended_age;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Story
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set genre
+     *
+     * @param string $genre
+     *
+     * @return Story
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    /**
+     * Get genre
+     *
+     * @return string
+     */
+    public function getGenre()
+    {
+        return $this->genre;
+    }
 }
