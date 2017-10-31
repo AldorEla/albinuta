@@ -4,7 +4,17 @@
     <div class="hero-banner js-hero-banner-container">
         <img src="{{ story_upload_destination }}{{ story.image }}" alt="{{ story.title }}" width="100%" />
     </div>
-    <div class="container show-page inner-page">
+    <div class="container show-page inner-page position-relative">
+        <ul class="sticked-actions">
+            <li>
+                <a title="Back to stories list" class="btn btn-secondary" href="{{ path('story_index') }}"><i class="fa fa-list"></i></a>
+            </li>
+            <li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a title="Edit story" class="btn btn-success" href="{{ path('story_edit', { 'id': story.id }) }}"><i class="fa fa-edit"></i></a>
+                {% endif %}
+            </li>
+        </ul>
         <div class="row flex-column-reverse flex-lg-row">
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 padding-top-30">
                 <div>
@@ -34,19 +44,6 @@
                     </span>
                 </h1>
                 {{ story.content|raw }}
-            </div>
-        </div>
-
-        <div class="row actions-row">
-            <div class="col">
-                <ul>
-                    <li>
-                        <a class="btn btn-secondary" href="{{ path('story_index') }}">Back to the list</a>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <a class="btn btn-success" href="{{ path('story_edit', { 'id': story.id }) }}">Edit</a>
-                        {% endif %}
-                    </li>
-                </ul>
             </div>
         </div>
     </div> <!-- /container -->

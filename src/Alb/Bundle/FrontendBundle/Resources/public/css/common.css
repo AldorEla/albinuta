@@ -309,6 +309,19 @@ main p:last-child {
 .title-filters strong {
 	color: #333;
 }
+.sticked-actions {
+	width: 40px;
+	text-align: center;
+	position: absolute;
+	top: 40px;
+	right: -40px;
+	z-index: 3;
+	background-color: #ddd;
+}
+.sticked-actions a {
+	color: #000;
+	border-radius: 0;
+}
 /* - Show Story */
 /* ###### Common Style ###### */
 
@@ -318,6 +331,16 @@ main p:last-child {
 
 /* [+] max-width: 767px */
 @media screen and (max-width: 767px) {
+	.sticked-actions {
+		width: auto;
+		top: -38px;
+		right: 0;
+		clear: right;
+	}
+	.sticked-actions li {
+		display: block;
+		float: left;
+	}
 	.close-suggestions {
 		background: #f2f2f2; /* Old browsers */
 		background: -moz-linear-gradient(top, #ffffff 0%, #999999 100%); /* FF3.6-15 */
