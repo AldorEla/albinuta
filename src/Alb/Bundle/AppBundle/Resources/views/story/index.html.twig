@@ -7,9 +7,11 @@
             <div class="col-sm-6 text-left">
                 <p class="results">We found {{ totalStories }} stories for you</p>
             </div>
-            <div class="col-sm-6 text-right text-xs-left">
-                <a class="btn btn-primary btn-icon btn-plus" href="{{ path('story_new') }}"> Create a new story</a>
-            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="col-sm-6 text-right text-xs-left">
+                    <a class="btn btn-primary btn-icon btn-plus" href="{{ path('story_new') }}"> Create a new story</a>
+                </div>
+            {% endif %}
         </div>
         <div class="row saved-videos">
             {% for story in stories %}
@@ -27,9 +29,11 @@
                                 <li class="col-6">
                                     <a class="btn btn-secondary" href="{{ path('story_show', { 'id': story.id }) }}">Read</a>
                                 </li>
-                                <li class="col-6 text-right">
-                                    <a class="btn btn-success" href="{{ path('story_edit', { 'id': story.id }) }}">Edit</a>
-                                </li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li class="col-6 text-right">
+                                        <a class="btn btn-success" href="{{ path('story_edit', { 'id': story.id }) }}">Edit</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
