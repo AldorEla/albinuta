@@ -7,6 +7,18 @@
         {% form_theme edit_form 'form/fields.html.twig' %}
 
         {{ form_start(edit_form) }}
+            <ul class="sticked-actions">
+                <li>
+                    <a title="Back to stories list" class="btn btn-secondary" href="{{ path('story_index') }}"><i class="fa fa-mail-reply"></i></a>
+                </li>
+                <li>
+                     <a title="Read the story" class="btn btn-secondary" href="{{ path('story_show', { 'id': story.id }) }}"><i class="fa fa-eye"></i></a>
+                </li>
+                <li>
+                    <button class="btn btn-success" title="Update story" type="submit"><i class="fa fa-floppy-o"></i></button>
+                </li>
+            </ul>
+
             <div id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="row padding-bottom-20">
                     <div class="col-md-4">

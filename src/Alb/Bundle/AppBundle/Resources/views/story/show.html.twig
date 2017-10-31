@@ -7,7 +7,7 @@
     <div class="container show-page inner-page position-relative">
         <ul class="sticked-actions">
             <li>
-                <a title="Back to stories list" class="btn btn-secondary" href="{{ path('story_index') }}"><i class="fa fa-list"></i></a>
+                <a title="Back to stories list" class="btn btn-secondary" href="{{ path('story_index') }}"><i class="fa fa-mail-reply"></i></a>
             </li>
             <li>
                 {% if is_granted('ROLE_ADMIN') %}
@@ -44,6 +44,19 @@
                     </span>
                 </h1>
                 {{ story.content|raw }}
+            </div>
+        </div>
+
+        <div class="row actions-row">
+            <div class="col">
+                <ul>
+                    <li>
+                        <a class="btn btn-secondary" href="{{ path('story_index') }}">Back to the list</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a class="btn btn-success" href="{{ path('story_edit', { 'id': story.id }) }}">Edit</a>
+                        {% endif %}
+                    </li>
+                </ul>
             </div>
         </div>
     </div> <!-- /container -->
