@@ -406,4 +406,33 @@ class Story
     {
         return $this->genre;
     }
+    /**
+     * @var string
+     */
+    private $recommended_gender;
+
+
+    /**
+     * Set recommendedGender
+     *
+     * @param string $recommendedGender
+     *
+     * @return Story
+     */
+    public function setRecommendedGender($recommendedGender)
+    {
+        $this->recommended_gender = $recommendedGender;
+
+        return $this;
+    }
+
+    /**
+     * Get recommendedGender
+     *
+     * @return string
+     */
+    public function getRecommendedGender()
+    {
+        return $this->recommended_gender;
+    }
 }

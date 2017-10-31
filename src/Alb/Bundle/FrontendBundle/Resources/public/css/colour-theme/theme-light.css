@@ -332,14 +332,6 @@ body.page-scrolled .header a.logo {
 	padding-left: 15px;
 	padding-right: 15px;
 }
-.actions-row {
-	background-color: #eceeef;
-	border-top: 1px solid #BF3F3F;
-	border-bottom: 1px solid #BF3F3F;
-	margin-top: 15px;
-	margin-bottom: 15px;
-	padding: 15px;
-}
 .field-icon {
 	background-color: #fff;
 	padding: 10px 15px;

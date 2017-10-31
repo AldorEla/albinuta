@@ -28,6 +28,10 @@ Alb\Bundle\AppBundle\Entity\Story:
             nullable: true
             type: string
             length: 255
+        recommended_gender:
+            nullable: true
+            type: string
+            length: 255
         type:
             nullable: true
             type: string

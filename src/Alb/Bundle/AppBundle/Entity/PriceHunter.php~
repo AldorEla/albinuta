@@ -313,4 +313,3 @@ class PriceHunter
         return $this->updated_at;
     }
 }
-

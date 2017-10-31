@@ -290,10 +290,24 @@ main p:last-child {
 /* - Profile pages */
 
 /* + Show Story */
+.actions-row {
+	background-color: #dddddd;
+	border-top: 1px solid #dcdddf;
+	border-bottom: 1px solid #dcdddf;
+	margin-top: 15px;
+	padding: 15px;
+}
 .title-filters {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: -10px;
 	font-size: 10px;
+	line-height: 1;
 	color: #999;
 	text-transform: capitalize;
+}
+.title-filters strong {
+	color: #333;
 }
 /* - Show Story */
 /* ###### Common Style ###### */
