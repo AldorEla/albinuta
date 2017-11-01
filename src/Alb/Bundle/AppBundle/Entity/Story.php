@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM; // doctrine orm annotations
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use ORMBehaviors\Sluggable\Sluggable;
 
 /**
  * @ORM\Entity
@@ -68,6 +69,16 @@ class Story
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function getSluggableFields()
+    {
+        return [ 'title' ];
+    }
+
+    public function generateSlugValue($values)
+    {
+        return implode('-', $values);
     }
 
     /**

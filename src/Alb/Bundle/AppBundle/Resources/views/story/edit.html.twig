@@ -1,23 +1,33 @@
 {% extends 'frontend.html.twig' %}
 
 {% block body %}
+    <div class="hero-banner js-hero-banner-container">
+        <img src="{{ story_upload_destination }}{{ story.image }}" alt="{{ story.title }}" width="100%" />
+    </div>
+
     <div class="container edit-page inner-page">
         <h1>{{ story.title }}<br /><span class="form-subtitle text-uppercase">Story edit</span></h1>
 
         {% form_theme edit_form 'form/fields.html.twig' %}
 
         {{ form_start(edit_form) }}
-            <ul class="sticked-actions">
-                <li>
-                    <a title="Back to stories list" class="btn btn-secondary" href="{{ path('story_index') }}"><i class="fa fa-mail-reply"></i></a>
-                </li>
-                <li>
-                     <a title="Read the story" class="btn btn-secondary" href="{{ path('story_show', { 'id': story.id }) }}"><i class="fa fa-eye"></i></a>
-                </li>
-                <li>
-                    <button class="btn btn-success" title="Update story" type="submit"><i class="fa fa-floppy-o"></i></button>
-                </li>
-            </ul>
+            <div class="sticked-actions">
+                <div class="position-relative">
+                    {# <input title="Minimize Tools panel" type="checkbox">
+                    <span class="minimize"><i class="fa fa-window-minimize" aria-hidden="true"></i></span> #}
+                    <ul>
+                        <li>
+                            <a title="Back to stories list" class="btn btn-secondary" href="{{ path('story_index') }}"><i class="fa fa-mail-reply"></i></a>
+                        </li>
+                        <li>
+                             <a title="Read the story" class="btn btn-secondary" href="{{ path('story_show', { 'id': story.id }) }}"><i class="fa fa-eye"></i></a>
+                        </li>
+                        <li>
+                            <button class="btn btn-success" title="Update story" type="submit"><i class="fa fa-floppy-o"></i></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
             <div id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="row padding-bottom-20">

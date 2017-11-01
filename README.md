@@ -1,9 +1,9 @@
 Albinuta WebAPP
 ========================================================================================
-> Albinuta is an online space for stories for kids.
-> Some of them may have video available, some may only be written stories.
-> Some of them might be crawled from Youtube (or other similar websites),
-> some of them might be added by admin through our interface.
+> Albinuta is an online space for stories for kids and a techonological playground.
+> Some of the stories may have video available, some may only be written stories.
+> Some of the stories might be crawled from Youtube (or other similar websites),
+> some of the stories might be added by admin through our interface.
 
 ## Main Bundles
 - AlbFrontendBundle: Display content logically processed from AlbAppBundle
