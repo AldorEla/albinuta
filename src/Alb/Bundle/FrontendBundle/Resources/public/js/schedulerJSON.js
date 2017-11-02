@@ -54,8 +54,8 @@ function Scheduler(string) {
           openDay = capitalize(scheduledWeekDays[k]);
           closeDay = capitalize(scheduledWeekDays[k]);
           if(scheduleHours) {
-            openHour = scheduleHours.toLowerCase().trim().split("-")[0];
-            closeHour = scheduleHours.toLowerCase().trim().split("-")[1];
+            openHour = scheduleHours.toLowerCase().trim().split("-")[0].trim();
+            closeHour = scheduleHours.toLowerCase().trim().split("-")[1].trim();
           }
           
           scheduleData.push(
@@ -76,8 +76,8 @@ function Scheduler(string) {
         openDay = scheduleDays.trim();
         closeDay = scheduleDays.trim();
         if(scheduleHours) {
-          openHour = scheduleHours.trim().split("-")[0];
-          closeHour = scheduleHours.trim().split("-")[1];
+          openHour = scheduleHours.trim().split("-")[0].trim();
+          closeHour = scheduleHours.trim().split("-")[1].trim();
         }
         
         scheduleData.push(
