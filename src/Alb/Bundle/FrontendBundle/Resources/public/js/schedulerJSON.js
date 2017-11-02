@@ -95,8 +95,7 @@ function Scheduler(string) {
       }
     }
 
-    periods.push('periods', scheduleData);
-    scheduler.push('regularHours', periods);
+    scheduler.push({"regularHours": {"periods": scheduleData}});
   }
   return JSON.stringify(scheduler);
 }
