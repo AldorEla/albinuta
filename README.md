@@ -37,7 +37,7 @@ Playground for registered users [@TBD]
 7. PriceHunter, json content with products provided by an external url
 8. ElasticSearch:
 - Installation guide: https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html
-- Populate using the bundle provoded by FOS:
+- Populate using the bundle provided by FOS:
 ```
 console fos:elastica:populate
 ```
