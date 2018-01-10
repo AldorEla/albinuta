@@ -13,6 +13,7 @@ $(document).ready(function(){
   initAddFileUploadPreview();
   initDatatables();
   initAjaxSearch('#ajaxSearchForm');
+  googleCSE();
 });
 
 $(window).on('load', function(){
@@ -370,4 +371,78 @@ function setSelectedSuggestion(e) {
 			}
 		}
 	});
+}
+
+$.fn.setArrowDirection = function (degrees, class_name) {
+	var _this = this;
+	_this.css({
+		'-ms-transform': 'rotate(' + degrees + 'deg)',
+		'-webkit-transform': 'rotate(' + degrees + 'deg)',
+		'transform': 'rotate(' + degrees + 'deg)'
+	})
+	.addClass(class_name);
+	
+	return false;
+};
+
+$.fn.toInt = function () {
+	var time = parseInt($(this).selector);
+	return time;
+}
+
+function googleCSE() {
+	var YOUR_API_KEY = 'AIzaSyBCvwVQ0eela9lIX0Wx46EelodWcYMBtXQ';
+	var cx = '007745925954021933777%3Ackvjqw6v5d0';
+	var query = 'elenaalexie';
+	query = encodeURIComponent(query);
+	var url = 'https://www.googleapis.com/customsearch/v1?q=www.linkedin.com/in/' + query + '&cx=' + cx + '&key=' + YOUR_API_KEY;
+	
+	var containerCSE = $('#googleCSE');
+	$.ajax({
+		url: url,
+		data: {},
+		success: function (result) {
+			if (!result) {
+				// Do nothing
+				return false;
+			} else {
+				if (result.items) {
+					var items = result.items;
+					console.log(items);
+					var elements = [];
+					if (items.length) {
+						$(items).each(function(i, v) {
+							elements.push(v);
+						});
+					}
+
+					if (elements.length) {
+						$(elements).each(function (j, k) {
+							var element = $('<li>');
+							var element_data = '<span>Kind: </span>' + '<span>' + k.kind + '</span>';
+							element_data += '<br /><span>Title: </span>' + '<span>' + k.title + '</span>';
+							element_data += '<br /><span>Link: </span>' + '<span>' + k.link + '</span>';
+							element.html(element_data);
+							$(containerCSE).append(element);
+							return false;
+						});
+					}
+				}
+			}
+		}
+	});
+}
+
+function setTimeForAnalogClock() {
+	var time = new Date();
+	var hours_time = time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
+	var minutes_time = time.toLocaleString('en-US', { minute: 'numeric', hour12: true });
+	var hours_int = $(hours_time).toInt();
+	var minutes_int = $(minutes_time).toInt();
+	// Divide by 12 cause our timing is based on 12 hours
+	var hours_to_degrees = hours_int / 12 * 360;
+	var minutes_to_degrees = minutes_int / 60 * 360;
+
+	$('.arrow-hours').setArrowDirection(hours_to_degrees, 'arrow-hours');
+	$('.arrow-minutes').setArrowDirection(minutes_to_degrees, 'arrow-minutes');
 }

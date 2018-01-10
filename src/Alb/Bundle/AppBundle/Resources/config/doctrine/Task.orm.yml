@@ -1,0 +1,19 @@
+Alb\Bundle\AppBundle\Entity\Task:
+    type: entity
+    table: null
+    repositoryClass: Alb\Bundle\AppBundle\Repository\TaskRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        description:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
+    oneToMany:
+        tag:
+            targetEntity: Tag
+            mappedBy: task

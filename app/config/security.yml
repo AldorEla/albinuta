@@ -21,6 +21,7 @@ security:
             anonymous:    ~
             logout:       ~
             form_login:
+                default_target_path: /
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
                 # if you are using Symfony < 2.8, use the following config instead:

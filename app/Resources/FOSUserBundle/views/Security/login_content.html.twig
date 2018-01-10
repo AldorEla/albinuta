@@ -1,5 +1,9 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% if is_granted('ROLE_USER') %}
+    
+{% endif %}
+
 <h1 class="text-uppercase">Login</h1>
 
 {% if error %}

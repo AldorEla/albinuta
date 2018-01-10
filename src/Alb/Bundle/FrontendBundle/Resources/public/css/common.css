@@ -422,3 +422,245 @@ main p:last-child {
   	}
 }
 /* - Animate */
+
+/* + Loader */
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: white;
+  border-width: 16px;
+  border-top-color: #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: relative;
+}
+/* .loader::after {
+	content: "";
+	width: calc(100% + 32px);
+	height: calc(100% + 32px);
+	position: absolute;
+	top: -16px;
+	left: -16px;
+	z-index: 5;
+	background: red;
+	border-radius: 50%;
+	-webkit-animation: spinRed 2s linear infinite; /* Safari */
+  	/* animation: spinRed 2s linear infinite; */
+/* } */
+
+/* Safari */
+@-webkit-keyframes spin {
+	0% {
+		transform: rotate(0deg); 
+	}
+	25% {
+		border-top-color: #fff;
+		border-right-color: #3498db;
+	}
+	50% {
+		border-right-color: #fff;
+		border-bottom-color: #3498db;
+	}
+	75% {
+		border-bottom-color: #fff;
+		border-left-color: #3498db;
+	}
+	100% { 
+		border-left-color: #fff;
+		border-top-color: #3498db;
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+  	0% {
+		transform: rotate(0deg); 
+	}
+	25% {
+		border-top-color: #fff;
+		border-right-color: #3498db;
+	}
+	50% {
+		border-right-color: #fff;
+		border-bottom-color: #3498db;
+	}
+	75% {
+		border-bottom-color: #fff;
+		border-left-color: #3498db;
+	}
+	100% { 
+		border-left-color: #fff;
+		border-top-color: #3498db;
+		transform: rotate(360deg);
+	}
+}
+/* - Loader */
+
+/* + Clock */
+.clock-static::before {
+	content: "";
+	display: block;
+	width: 110%;
+	height: 110%;
+	position: absolute;
+	z-index: 0;
+	top: -5%;
+	left: -5%;
+	border-radius: 50%;
+	background: brown;
+	-webkit-box-shadow: 3px 0px 10px 0 rgba(0, 0, 0, 0.16);
+	  box-shadow: 3px 0px 10px 0 rgba(0, 0, 0, 0.16);
+	  overflow: hidden;
+}
+.clock-static {
+	position: relative;
+	z-index: 1;
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin: 20px auto;
+	font-family: "Open Sans", sans-serif;
+}
+.clock-static .clock-container {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.clock-static .clock-container ul.clock-hours::before {
+	content: "";
+	display: block;
+	position: absolute;
+	z-index: 2;
+	top: 15px;
+	left: 15px;
+	width: calc(100% - 30px);
+	height: calc(100% - 30px);
+	border-radius: 50%;
+}
+.clock-static .clock-container ul.clock-hours {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	background-image: -webkit-gradient(
+		linear, left top, left bottom, from(rgba(0,0,0,0.8)),
+		to(rgba(0,0,0,0.5)), color-stop(.5,#222222)
+	);
+	border: 1px solid beige;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border-radius: 50%;
+	position: relative;
+	text-indent: -3px;
+}
+.clock-static .clock-container ul.clock-hours li {
+	display: block;
+	position: absolute;
+	z-index: 3;
+	/* display: none; */
+}
+.clock-static .clock-container ul.clock-hours .hour {
+	font-size: 18px;
+	line-height: 18px;
+	font-weight: 700;
+	color: #fff;
+	border-radius: 50%;
+	padding: 2px 0;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+}
+.clock-static .clock-container ul.clock-hours .hour::before {
+	content: attr(data-hour);
+	font-size: 18px;
+	line-height: 18px;
+	font-weight: 700;
+}
+.clock-static .clock-container ul.clock-hours .hour-1 {
+	top: 10%;
+	left: calc(70% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-2 {
+	top: 25%;
+	left: calc(85% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-3 {
+	top: 45%;
+	left: calc(90% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-4 {
+	top: 65%;
+	left: calc(85% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-5 {
+	bottom: 10%;
+	left: calc(70% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-6 {
+	bottom: 8px;
+	left: calc(50% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-7 {
+	bottom: 10%;
+	left: calc(30% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-8 {
+	top: 65%;
+	left: calc(15% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-9 {
+	top: 45%;
+	left: calc(10% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-10 {
+	top: 25%;
+	left: calc(15% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-11 {
+	top: 10%;
+	left: calc(30% - 8px);
+}
+.clock-static .clock-container ul.clock-hours .hour-12 {
+	top: 8px;
+	left: calc(50% - 8px);
+}
+.clock-static .clock-container .arrows-container {
+	position: absolute;
+	z-index: 4;
+	top: calc(50% + 5px);
+	left: calc(50% - 2px);
+	overflow: visible;
+}
+.clock-static .clock-container .arrows-container .arrow {
+	background: #fff;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	-webkit-transform-origin: 0% 100%;
+	transform-origin: 0% 100%;
+	transition: all 0.5s ease-in-out;
+}
+.clock-static .clock-container .arrows-container .arrow.arrow-hours {
+	width: 4px;
+	height: 45px;
+}
+.clock-static .clock-container .arrows-container .arrow.arrow-minutes {
+	width: 2px;
+	height: 40px;
+	left: 3px!important;
+	z-index: 5;
+	background-color: yellowgreen;
+}
+.clock-static .clock-container .arrows-container .arrow.arrow-minutes.arch-canvas {
+	background: rgba(255, 255, 255, 0.1);
+	transition: all 0.2s ease-in-out;
+	opacity: 1;
+}
+/* - Clock */

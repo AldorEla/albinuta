@@ -363,6 +363,9 @@ body.page-scrolled .header a.logo {
 	font-size: 15px;
 	text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.85);
 }
+.field-icon .fa {
+	color: #fff;
+}
 .video-box:hover .field-icon {
 	opacity: 0.25;
 }

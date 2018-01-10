@@ -1,0 +1,24 @@
+{% extends 'frontend.html.twig' %}
+
+{% block body %}
+	<div class="container inner-page">
+		<div class="row">
+			<div class="col-sm-6 mx-auto">
+				<h1>New Task</h1>
+				{{ form_start(form) }}
+				<div>
+					{{ form_errors(form) }}
+				</div>
+				<div>
+					{{ form_widget(form) }}
+				</div>
+				<div class="row">
+					<div class="col-sm-6 mx-auto">
+						<button class="btn btn-primary btn-block" type="submit">Submit</button>
+					</div>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

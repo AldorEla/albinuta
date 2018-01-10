@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM; // doctrine orm annotations
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use ORMBehaviors\Sluggable\Sluggable;
 
 /**
  * @ORM\Entity
@@ -68,6 +69,16 @@ class Story
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function getSluggableFields()
+    {
+        return [ 'title' ];
+    }
+
+    public function generateSlugValue($values)
+    {
+        return implode('-', $values);
     }
 
     /**
@@ -405,5 +416,34 @@ class Story
     public function getGenre()
     {
         return $this->genre;
+    }
+    /**
+     * @var string
+     */
+    private $recommended_gender;
+
+
+    /**
+     * Set recommendedGender
+     *
+     * @param string $recommendedGender
+     *
+     * @return Story
+     */
+    public function setRecommendedGender($recommendedGender)
+    {
+        $this->recommended_gender = $recommendedGender;
+
+        return $this;
+    }
+
+    /**
+     * Get recommendedGender
+     *
+     * @return string
+     */
+    public function getRecommendedGender()
+    {
+        return $this->recommended_gender;
     }
 }

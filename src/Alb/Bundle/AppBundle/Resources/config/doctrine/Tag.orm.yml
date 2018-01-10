@@ -1,0 +1,22 @@
+Alb\Bundle\AppBundle\Entity\Tag:
+    type: entity
+    table: null
+    repositoryClass: Alb\Bundle\AppBundle\Repository\TagRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
+    manyToOne:
+        task:
+            targetEntity: Task
+            inversedBy: tag
+            joinColumn:
+                name: task_id
+                referencedColumnName: id

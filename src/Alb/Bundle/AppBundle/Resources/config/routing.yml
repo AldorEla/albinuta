@@ -5,3 +5,13 @@ alb_app_story:
 alb_price_hunter:
     resource: "@AlbAppBundle/Resources/config/routing/price_hunter.yml"
     prefix:   /price-hunter/
+
+alb_task_new:
+    path:     /task/new
+    defaults: { _controller: "AlbAppBundle:Task:new" }
+    methods:  [GET, POST]
+
+alb_fruits:
+    path:     /fruits
+    defaults: { _controller: "AlbAppBundle:Fruits:fruits" }
+    methods:  [GET, POST]
