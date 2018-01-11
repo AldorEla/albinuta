@@ -3,6 +3,7 @@
 services:
     # KernelRequest listener
     extension.listener:
+        public: true
         class: Alb\Bundle\AppBundle\EventListener\DoctrineExtensionListener
         calls:
             - [ setContainer, [ "@service_container" ] ]
@@ -17,6 +18,7 @@ services:
 
     # Doctrine Extension listeners to handle behaviors
     gedmo.listener.tree:
+        public: true
         class: Gedmo\Tree\TreeListener
         tags:
             - { name: doctrine.event_subscriber, connection: default }
@@ -24,15 +26,17 @@ services:
             - [ setAnnotationReader, [ "@annotation_reader" ] ]
 
     gedmo.listener.translatable:
+        public: true
         class: Gedmo\Translatable\TranslatableListener
         tags:
             - { name: doctrine.event_subscriber, connection: default }
         calls:
             - [ setAnnotationReader, [ "@annotation_reader" ] ]
-            - [ setDefaultLocale, [ %locale% ] ]
+            - [ setDefaultLocale, [ locale ] ]
             - [ setTranslationFallback, [ false ] ]
 
     gedmo.listener.timestampable:
+        public: true
         class: Gedmo\Timestampable\TimestampableListener
         tags:
             - { name: doctrine.event_subscriber, connection: default }
@@ -40,6 +44,7 @@ services:
             - [ setAnnotationReader, [ "@annotation_reader" ] ]
 
     gedmo.listener.sluggable:
+        public: true
         class: Gedmo\Sluggable\SluggableListener
         tags:
             - { name: doctrine.event_subscriber, connection: default }
@@ -47,6 +52,7 @@ services:
             - [ setAnnotationReader, [ "@annotation_reader" ] ]
 
     gedmo.listener.sortable:
+        public: true
         class: Gedmo\Sortable\SortableListener
         tags:
             - { name: doctrine.event_subscriber, connection: default }
@@ -54,6 +60,7 @@ services:
             - [ setAnnotationReader, [ "@annotation_reader" ] ]
 
     gedmo.listener.loggable:
+        public: true
         class: Gedmo\Loggable\LoggableListener
         tags:
             - { name: doctrine.event_subscriber, connection: default }

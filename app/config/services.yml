@@ -5,11 +5,13 @@ parameters:
 
 services:
     gedmo.listener.blameable:
+        public: true
         class: Gedmo\Blameable\BlameableListener
         tags:
           - { name: doctrine.event_subscriber, connection: default }
     
     alb_app.namer.story_upload:
+        public: true
         class: Alb\Bundle\AppBundle\Namer\StoryNamer
         tags:
             - { name: namer }
