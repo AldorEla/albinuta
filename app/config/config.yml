@@ -16,6 +16,7 @@ parameters:
     locale: en
     story_upload_destination: '/uploads/story/images/'
     mailer_user: 'elena.coman33@gmail.com'
+    container.autowiring.strict_mode: true
 
 framework:
     #esi: ~
