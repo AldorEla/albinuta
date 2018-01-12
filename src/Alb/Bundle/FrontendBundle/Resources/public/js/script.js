@@ -13,7 +13,7 @@ $(document).ready(function(){
   initAddFileUploadPreview();
   initDatatables();
   initAjaxSearch('#ajaxSearchForm');
-  googleCSE();
+//   googleCSE();
 });
 
 $(window).on('load', function(){
