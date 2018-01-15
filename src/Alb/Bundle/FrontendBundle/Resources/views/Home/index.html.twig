@@ -28,7 +28,13 @@
 	      				</div>
 		      			<h5><a title="{{ story.title|trim }}" href="{{ path('story_show', { 'id': story.id }) }}">{{ story.title|trim }}</a></h5>
 	      				<div class="details-box" data-eq-height>
-		      				<p>{{ story.content|striptags|length > 175 ? story.content|striptags|slice(0, 175) ~ '...' : story.content|striptags  }}</p>
+		      				<p>
+							  	{{ 
+									story.content|striptags|raw|length > 154 ? 
+									story.content|striptags|raw|slice(0, 154) ~ '...' : 
+									story.content|striptags|raw  
+								}}
+							</p>
 		      			</div>
 	      			</div>
             	</div>
@@ -58,6 +64,16 @@
 				</div>
 			</div>
 		</div>
+
+		<ul class="list">
+			<li>EASIER TO CREATE TWO DIMENSIONAL LAYOUTS</li>
+			<li>SIMPLER MARKUP</li>
+			<li>FLEXIBLE</li>
+			<li>SKIP FRAMEWORKS</li>
+			<li>BROWSER SUPPORT</li>
+			<li><a href="examples.html">SEE EXAMPLES</a></li>
+		</ul>
+		
 		<script>
 			$(document).ready(function() {
 				setTimeForAnalogClock();

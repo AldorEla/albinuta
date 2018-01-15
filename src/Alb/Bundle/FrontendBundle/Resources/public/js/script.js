@@ -13,7 +13,9 @@ $(document).ready(function(){
   initAddFileUploadPreview();
   initDatatables();
   initAjaxSearch('#ajaxSearchForm');
-  googleCSE();
+  initCustomContentBox();
+  initCloseCustomContentModal();
+//   googleCSE();
 });
 
 $(window).on('load', function(){
@@ -445,4 +447,56 @@ function setTimeForAnalogClock() {
 
 	$('.arrow-hours').setArrowDirection(hours_to_degrees, 'arrow-hours');
 	$('.arrow-minutes').setArrowDirection(minutes_to_degrees, 'arrow-minutes');
+}
+
+/**
+ * Init Custom Content Modal
+ */
+function initCustomContentBox() {
+	// Define trigger element
+	var trigger = $('.colorbox');
+	
+	trigger.on('click', function() {
+		// Remove existing modal
+		if ($('.content-modal').length) {
+			$('.content-modal').remove();
+		}
+
+		// Get the HTML content from triggered element
+		var modal_new_content = trigger.html();
+
+		if (modal_new_content.length) {
+			// Define and append the new modal to the body
+			var modal = $('<div>');
+			$(modal).addClass('content-modal');
+			$(modal).html('<h4>Click anywhere to close!</h4>');
+			$('body').append($(modal));
+
+			// Define and append the new modal container with HTML content to the modal
+			var modal_container = $('<div>');
+			$(modal_container).addClass('content-modal-container');
+			$(modal_container).html(modal_new_content);
+			$(modal).append($(modal_container));
+
+			// Add Caption to the modal container, based on image alt attribute
+			if(modal_container.find('img').length) {
+				var caption = $('<caption>');
+				$(caption).text(modal_container.find('img').first().attr('alt'));
+				$(caption).addClass('bottom');
+				modal_container.append($(caption));
+			}
+
+			// Init the event for closing the modal
+			initCloseCustomContentModal();
+
+			// Return false to avoid changing the page in browser
+			return false;
+		}
+	});
+}
+
+function initCloseCustomContentModal() {
+	$('.content-modal').on('click', function() {
+		$('.content-modal').remove();
+	});
 }

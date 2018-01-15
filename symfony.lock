@@ -1,0 +1,107 @@
+{
+    "composer/ca-bundle": {
+        "version": "1.1.0"
+    },
+    "enqueue/amqp-lib": {
+        "version": "0.8.13"
+    },
+    "enqueue/amqp-tools": {
+        "version": "0.8.14"
+    },
+    "friendsofsymfony/user-bundle": {
+        "version": "v2.0.2"
+    },
+    "imagine/imagine": {
+        "version": "v0.6.3"
+    },
+    "incenteev/composer-parameter-handler": {
+        "version": "v2.1.2"
+    },
+    "jms/parser-lib": {
+        "version": "1.0.0"
+    },
+    "jms/serializer": {
+        "version": "1.10.0"
+    },
+    "jms/serializer-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "fe60ce509ef04a3f40da96e3979bc8d9b13b2372"
+        }
+    },
+    "knplabs/gaufrette": {
+        "version": "v0.3.1"
+    },
+    "kriswallsmith/assetic": {
+        "version": "v1.4.0"
+    },
+    "kriswallsmith/buzz": {
+        "version": "v0.15.2"
+    },
+    "paragonie/random_compat": {
+        "version": "v2.0.11"
+    },
+    "php-amqplib/php-amqplib": {
+        "version": "v2.7.0"
+    },
+    "phpcollection/phpcollection": {
+        "version": "0.5.0"
+    },
+    "phpoption/phpoption": {
+        "version": "1.5.0"
+    },
+    "queue-interop/amqp-interop": {
+        "version": "0.7.2"
+    },
+    "queue-interop/queue-interop": {
+        "version": "0.6.1"
+    },
+    "sensio/distribution-bundle": {
+        "version": "v5.0.21"
+    },
+    "sensio/generator-bundle": {
+        "version": "v3.1.7"
+    },
+    "sensiolabs/security-checker": {
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.0",
+            "ref": "e65a105bf4cd5b1b79012ba029954927f05922e8"
+        }
+    },
+    "sonata-project/doctrine-extensions": {
+        "version": "1.0.2"
+    },
+    "sonata-project/easy-extends-bundle": {
+        "version": "2.3.0"
+    },
+    "sonata-project/media-bundle": {
+        "version": "3.10.0"
+    },
+    "sonata-project/notification-bundle": {
+        "version": "3.3.0"
+    },
+    "stfalcon/tinymce-bundle": {
+        "version": "v2.1"
+    },
+    "symfony/assetic-bundle": {
+        "version": "v2.8.2"
+    },
+    "symfony/polyfill-php56": {
+        "version": "v1.6.0"
+    },
+    "symfony/polyfill-php70": {
+        "version": "v1.6.0"
+    },
+    "symfony/polyfill-util": {
+        "version": "v1.6.0"
+    },
+    "zendframework/zenddiagnostics": {
+        "version": "v1.1.0"
+    }
+}

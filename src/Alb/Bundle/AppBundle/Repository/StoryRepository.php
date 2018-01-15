@@ -20,6 +20,26 @@ class StoryRepository extends EntityRepository
     	return $stories;
 	}
 
+	/**
+	 * Retrieve all stories, sanitized, paginated
+	 */
+	public static function findAllStoriesSanitized($em, $page = 1, $limit = 2) {
+		if(!$em) return false;
+
+		$stories 		= [];
+		$dql 			= 'SELECT s.id, s.title, s.video, s.content FROM AlbAppBundle:Story s';
+		$stories 		= self::paginate($dql, $page, $limit, $em);
+		$patterns 		= ['&icirc;', '&hellip;'];
+		$replacements	= ['î', '.'];
+		$stories 		= array_map(function($element) use($patterns, $replacements) {
+			return str_replace(
+				$patterns, $replacements, $element
+			);
+		}, $stories);
+
+    	return $stories;
+	}
+
 	public static function paginate($dql, $page = 1, $limit = 10, $em)
 	{
 		$query = $em->createQuery($dql)

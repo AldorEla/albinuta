@@ -59,7 +59,10 @@
         ],
         "post-update-cmd": [
             "@symfony-scripts"
-        ]
+        ],
+        "auto-scripts": {
+            "security-checker security:check": "script"
+        }
     },
     "config": {
         "platform": {
