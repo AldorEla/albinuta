@@ -454,7 +454,7 @@ function setTimeForAnalogClock() {
  */
 function initCustomContentBox() {
 	// Define trigger element
-	var trigger = $('.colorbox');
+	var trigger = $('.custom-modal');
 	
 	trigger.on('click', function() {
 		// Remove existing modal
