@@ -397,7 +397,7 @@ main p:last-child {
 .vich-file input[type="file"] + .form-group + a:hover {
 	text-indent: 25px;
 	padding-top: 1px;
-	/* border: 3px solid darkslateblue; */
+	border: 3px solid darkslateblue;
 }
 .vich-file input[type="file"] + .form-group + a:hover::before {
 	content: "\f0ed";
@@ -408,7 +408,7 @@ main p:last-child {
 }
 .vich-file input[type="file"] + .form-group + a:hover,
 .vich-file input[type="file"] + .form-group + a:hover::after {
-	/* background: darkslateblue; */
+	background: darkslateblue;
 }
 .edit-page .col-md-4 .card-block input.form-control {
 	border-bottom-left-radius: 0;
