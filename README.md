@@ -16,7 +16,7 @@ Albinuta WebAPP
 - jQuery v3.2.1 JS library
 
 ## Features
-1. All frontend pages:  
+1. Frontend pages features:  
 Top Navigation  
 Footer  
 Change Colour Theme  
